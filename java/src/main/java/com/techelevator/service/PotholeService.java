@@ -2,7 +2,9 @@ package com.techelevator.service;
 
 import com.techelevator.dao.PotholeDao;
 import com.techelevator.model.Pothole;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PotholeService {
 
     private PotholeDao potholeDao;
@@ -11,6 +13,6 @@ public class PotholeService {
     }
 
     public Pothole processPothole (Pothole newPothole){
-        return newPothole;
+        return potholeDao.createPothole(newPothole);
     }
 }

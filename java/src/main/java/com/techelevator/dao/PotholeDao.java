@@ -4,7 +4,7 @@ import com.techelevator.model.Pothole;
 import java.util.List;
 
 public interface PotholeDao {
-    List<Pothole> getPotholes ();
+    Pothole getPotholeById (int id);
 
     Pothole createPothole (Pothole newPothole);
 }

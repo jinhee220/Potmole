@@ -6,18 +6,18 @@ public class Pothole {
 
     private int potHoleId;
     private int userId;
-    private BigDecimal longitude;
     private BigDecimal latitude;
+    private BigDecimal longitude;
     private String currentStatus;
     private String reportedDate;
     private String inspectedDate;
     private String repairedDate;
 
-    public Pothole(int potHoleId, int userId, BigDecimal longitude, BigDecimal latitude, String currentStatus, String reportedDate, String inspectedDate, String repairedDate) {
-        this.potHoleId = potHoleId;
+    public Pothole(int userId, BigDecimal latitude, BigDecimal longitude, String currentStatus, String reportedDate, String inspectedDate, String repairedDate) {
+        //this.potHoleId = potHoleId;
         this.userId = userId;
-        this.longitude = longitude;
         this.latitude = latitude;
+        this.longitude = longitude;
         this.currentStatus = currentStatus;
         this.reportedDate = reportedDate;
         this.inspectedDate = inspectedDate;
@@ -43,14 +43,6 @@ public class Pothole {
         this.userId = userId;
     }
 
-    public BigDecimal getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(BigDecimal longitude) {
-        this.longitude = longitude;
-    }
-
     public BigDecimal getLatitude() {
         return latitude;
     }
@@ -59,6 +51,13 @@ public class Pothole {
         this.latitude = latitude;
     }
 
+    public BigDecimal getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(BigDecimal longitude) {
+        this.longitude = longitude;
+    }
     public String getCurrentStatus() {
         return currentStatus;
     }
