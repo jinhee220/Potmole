@@ -4,9 +4,13 @@
     <h2>The premiere pothole tracking web service</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sunt aspernatur vero amet fugit omnis corrupti eos magnam sapiente id exercitationem, dolores nobis reprehenderit libero iure explicabo ratione minus esse.</p>
   </div>
+  <MapBox/>
 </template>
 
 <script>
+import MapBox from '../components/MapBox.vue';
+
 export default {
+    components: { MapBox }
 };
 </script>
