@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<div>
+		<!-- <div>
 			<h2>Click a Pothole Location</h2>
-			<MapBox />
-		</div>
+			<MapBox/>
+		</div> -->
 
 		<form>
 			<div class="form-group">
@@ -18,12 +18,12 @@
 </template>
 
 <script>
-import MapBox from "@/components/MapBox.vue";
+//import MapBox from "@/components/MapBox.vue";
 //import a service class here
 
 export default {
 	components: {
-		MapBox,
+		//MapBox,
 	},
 	props: {
 		// bringing in pothole object from ReportPothole
@@ -32,10 +32,12 @@ export default {
 			required: true,
 		},
 	},
-	data() {
-		return {
+	
+	computed: {
+		
 			// Since props are a read-only, creating an object that can be acted on
-			editPothole: {
+			editPothole() {
+				return {
 				userId: this.pothole.userId,
 				longitude: this.pothole.longitude,
 				latitude: this.pothole.latitude,
@@ -43,8 +45,8 @@ export default {
 				reportedDate: this.pothole.reportedDate,
 				inspectedDate: this.pothole.inspectedDate,
 				repairedDate: this.pothole.repairedDate,
-			},
-		};
+			}
+		},
 	},
 	methods: {
 		// logics to take in store information and commit to servers

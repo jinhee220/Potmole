@@ -15,12 +15,18 @@ export default {
 	data() {
 		return {
 			// change this to be a prop from the form
-			pothole: {
-				latitude: "",
-				longitude: "",
+			editCoordinates: {
+				latitude: '',
+				longitude: '',
 			},
 		};
 	},
+  props: {
+    coordinates: {
+      type: Object,
+      required: true,
+    }
+  },
 	mounted() {
 		// Set your Mapbox access token
 		mapboxgl.accessToken =
@@ -44,13 +50,18 @@ export default {
 		// This adds plugin to map
 		map.addControl(geocoder);
 		// This lets us click on map and get coords, event handler
-		map.on("click", (coords) => {
-			let coordinates = coords.lngLat;
+		map.on("click", (event) => {
+			let coords = event.lngLat;
 
-			this.pothole.longitude = coordinates.lng;
-			this.pothole.latitude = coordinates.lat;
+			this.editCoordinates.longitude = coords.lng;
+			this.editCoordinates.latitude = coords.lat;
+
+      this.$emit("coordinates-selected", this.editCoordinates);
 		});
 	},
+    returnCoordinates() {
+      return this.coordinates;
+    }
 };
 </script>
 
