@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -29,10 +30,19 @@ public class PotholeController {
     // Request Mappings
 
 
-    @RequestMapping(path = "/pothole", method = RequestMethod.GET)
-    public Pothole getPotholes () {
-        Pothole newPothole = new Pothole();
-        return newPothole;
+    @RequestMapping(path = "/getAllPotholes", method = RequestMethod.GET)
+    public List<Pothole> getPotholes () {
+        List<Pothole> allPotholes ;
+        try {
+            allPotholes = potholeService.getListOfPotholes();
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (allPotholes.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No Users Found");
+        }
+        return allPotholes;
     }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/reportPothole", method = RequestMethod.POST)

@@ -7,4 +7,6 @@ public interface PotholeDao {
     Pothole getPotholeById (int id);
 
     Pothole createPothole (Pothole newPothole);
+
+    List<Pothole> getListOfPotholes();
 }

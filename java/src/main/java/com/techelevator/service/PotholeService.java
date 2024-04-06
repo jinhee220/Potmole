@@ -4,6 +4,8 @@ import com.techelevator.dao.PotholeDao;
 import com.techelevator.model.Pothole;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class PotholeService {
 
@@ -14,5 +16,9 @@ public class PotholeService {
 
     public Pothole processPothole (Pothole newPothole){
         return potholeDao.createPothole(newPothole);
+    }
+
+    public List<Pothole> getListOfPotholes(){
+        return potholeDao.getListOfPotholes();
     }
 }
