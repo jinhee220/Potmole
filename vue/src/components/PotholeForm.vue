@@ -1,25 +1,29 @@
 <template>
-	<div>
+	
 		<!-- <div>
 			<h2>Click a Pothole Location</h2>
 			<MapBox/>
 		</div> -->
-
-		<form>
+		
+		<form v-on:submit.prevent="submitForm">
 			<div class="form-group">
 				<h3>Longitude: {{ editPothole.longitude }}</h3>
 				<h3>Latitude: {{ editPothole.latitude }}</h3>
 				<h3>Date: {{ editPothole.reportedDate }}</h3>
+				<button type="submit">Submit</button>
 			</div>
 			<!-- Adding a input - description for a pothole(?) -->
 			<!-- Adding a input - description for a img file(?) -->
+
 		</form>
-	</div>
+	
 </template>
 
 <script>
 //import MapBox from "@/components/MapBox.vue";
 //import a service class here
+
+import PotholeService from "../services/PotholeService"
 
 export default {
 	components: {
@@ -32,12 +36,12 @@ export default {
 			required: true,
 		},
 	},
-	
+
 	computed: {
-		
-			// Since props are a read-only, creating an object that can be acted on
-			editPothole() {
-				return {
+
+		// Since props are a read-only, creating an object that can be acted on
+		editPothole() {
+			return {
 				userId: this.pothole.userId,
 				longitude: this.pothole.longitude,
 				latitude: this.pothole.latitude,
@@ -52,8 +56,47 @@ export default {
 		// logics to take in store information and commit to servers
 
 		submitForm() {
+
 			// call validateForm to check if form has required fields
+
+			// if (!this.validateForm()) {
+			// 	return;
+			// }
+
 			// call on service to add pothole
+			//if (this.editPothole.id === 0) {
+				PotholeService
+					.addPothole(this.editPothole)
+					.then(response => {
+						window.alert("Beep Boop Beep");
+						if (response.status === 201) {
+							this.$store.commit();
+							this.$router.push({ name: "home" });
+						}
+					})
+					.catch(error => {
+						this.handleErrorResponse(error, 'adding');
+					});
+			//}
+
+			// THIS ELSE STATEMENT MIGHT NOT BE NEEDED !!!!!
+
+			// else {
+			// 	potholeService
+			// 		.updatePothole(this.editPothole)
+			// 		.then(response => {
+			// 			if(response.status === 200) {
+			// 				this.$store.commit();
+			// 				this.$router.push({ name: "PotholeListView"})
+			// 			}
+			// 		})
+			// 		.catch(error => {
+			// 			this.handleErrorResponse(error, 'updating');
+			// 		});
+			// }
+
+
+
 			// check if response.status === 201
 			// if successful show a notice
 			// push user to PotholeListsView

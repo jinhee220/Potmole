@@ -68,8 +68,8 @@ export default {
 			this.addMarker(coords);
 
 			// Update editCoordinates data with clicked coordinates
-			this.editCoordinates.longitude = coords.lng;
-			this.editCoordinates.latitude = coords.lat;
+			this.editCoordinates.longitude = coords.lng.toFixed(5);
+			this.editCoordinates.latitude = coords.lat.toFixed(5);
 
 			// Send coordinates-selected event with updated coordinates for parent class to listen for
 			this.$emit("coordinates-selected", this.editCoordinates);

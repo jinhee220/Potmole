@@ -23,11 +23,13 @@ export default {
 	data() {
 		return {
 			pothole: {
-				userId: null,
+
+				//userId: null,
+				userId: this.$store.state.user.id,
 				longitude: null,
 				latitude: null,
-				status: "reported",
-				reportedDate: "",
+				currentStatus: "reported",
+				reportedDate: new Date().toDateString(),
 				inspectedDate: "Not Inspected Yet",
 				repairedDate: "Not Repaired Yet",
 			}
