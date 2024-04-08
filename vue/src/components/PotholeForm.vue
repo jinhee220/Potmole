@@ -1,22 +1,20 @@
 <template>
-	
-		<!-- <div>
+	<!-- <div>
 			<h2>Click a Pothole Location</h2>
 			<MapBox/>
 		</div> -->
-		
-		<form v-on:submit.prevent="submitForm">
-			<div class="form-group">
-				<h3>Longitude: {{ editPothole.longitude }}</h3>
-				<h3>Latitude: {{ editPothole.latitude }}</h3>
-				<h3>Date: {{ editPothole.reportedDate }}</h3>
-				<button type="submit">Submit</button>
-			</div>
-			<!-- Adding a input - description for a pothole(?) -->
-			<!-- Adding a input - description for a img file(?) -->
 
-		</form>
-	
+	<form v-on:submit.prevent="submitForm">
+		<div class="form-group">
+			<h3>Longitude: {{ editPothole.longitude }}</h3>
+			<h3>Latitude: {{ editPothole.latitude }}</h3>
+			<h3>Date: {{ editPothole.reportedDate }}</h3>
+			<button type="submit">Submit</button>
+		</div>
+		<!-- Adding a input - description for a pothole(?) -->
+		<!-- Adding a input - description for a img file(?) -->
+
+	</form>
 </template>
 
 <script>
@@ -45,7 +43,7 @@ export default {
 				userId: this.pothole.userId,
 				longitude: this.pothole.longitude,
 				latitude: this.pothole.latitude,
-				currentStatus: "reported",
+				currentStatus: "Reported",
 				reportedDate: this.pothole.reportedDate,
 				inspectedDate: this.pothole.inspectedDate,
 				repairedDate: this.pothole.repairedDate,
@@ -65,18 +63,18 @@ export default {
 
 			// call on service to add pothole
 			//if (this.editPothole.id === 0) {
-				PotholeService
-					.addPothole(this.editPothole)
-					.then(response => {
-						window.alert("Beep Boop Beep");
-						if (response.status === 201) {
-							this.$store.commit();
-							this.$router.push({ name: "home" });
-						}
-					})
-					.catch(error => {
-						this.handleErrorResponse(error, 'adding');
-					});
+			PotholeService
+				.addPothole(this.editPothole)
+				.then(response => {
+					window.alert("Beep Boop Beep");
+					if (response.status === 201) {
+						this.$store.commit();
+						this.$router.push({ name: "home" });
+					}
+				})
+				.catch(error => {
+					this.handleErrorResponse(error, 'adding');
+				});
 			//}
 
 			// THIS ELSE STATEMENT MIGHT NOT BE NEEDED !!!!!

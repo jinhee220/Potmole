@@ -1,7 +1,18 @@
 <template>
-	<div></div>
+	<div>
+		<PotholeList />
+	</div>
 </template>
 
-<script></script>
+<script>
+import PotholeList from "../components/PotholeList.vue";
+
+export default {
+	components: {
+		PotholeList,
+	}
+}
+
+</script>
 
 <style></style>
