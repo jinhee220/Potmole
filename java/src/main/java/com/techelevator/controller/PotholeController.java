@@ -57,7 +57,7 @@ public class PotholeController {
 
         } catch (DaoException e) {
 
-            throw new ResponseStatusException((HttpStatus.BAD_REQUEST));
+            throw new ResponseStatusException((HttpStatus.BAD_REQUEST), e.getMessage());
 
         }
 

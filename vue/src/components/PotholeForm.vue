@@ -45,7 +45,7 @@ export default {
 				userId: this.pothole.userId,
 				longitude: this.pothole.longitude,
 				latitude: this.pothole.latitude,
-				status: "reported",
+				currentStatus: "reported",
 				reportedDate: this.pothole.reportedDate,
 				inspectedDate: this.pothole.inspectedDate,
 				repairedDate: this.pothole.repairedDate,
