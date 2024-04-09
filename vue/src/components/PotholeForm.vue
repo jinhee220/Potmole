@@ -66,9 +66,9 @@ export default {
 			PotholeService
 				.addPothole(this.editPothole)
 				.then(response => {
-					window.alert("Beep Boop Beep");
+					
 					if (response.status === 201) {
-						this.$store.commit();
+						//this.$store.commit();
 						this.$router.push({ name: "home" });
 					}
 				})

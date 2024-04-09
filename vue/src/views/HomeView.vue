@@ -3,8 +3,10 @@
     <img src="src\assets\image.png" />
     <h1>Pothole Tracker</h1>
     <h2>The premiere pothole tracking web service</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sunt aspernatur vero amet fugit omnis corrupti eos
-      magnam sapiente id exercitationem, dolores nobis reprehenderit libero iure explicabo ratione minus esse.</p>
+    <p>Welcome to PotMole – your go-to hub for tracking and fixing pesky potholes! 
+      Our platform simplifies pothole reporting, facilitating quick repairs and smoother rides. 
+      With real-time updates and seamless communication, PotMole empowers communities to tackle road hazards efficiently. 
+      Say goodbye to bumpy roads and hello to smoother travels with PotMole!</p>
   </div>
 </template>
 

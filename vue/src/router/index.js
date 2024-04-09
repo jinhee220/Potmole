@@ -54,6 +54,9 @@ const routes = [
 		path: "/report",
 		name: "ReportPothole",
 		component: ReportPotholeView,
+		meta: {
+			requiresAuth: true,
+		}
 	},
 	{
 		path: "/potholes",

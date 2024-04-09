@@ -2,12 +2,13 @@
 <template>
 	<div>
 		<h2>Click a Pothole Location</h2>
-		<!-- Call MapBox component and set parentComponent prop -->
+		<!-- Call MapBox component and set parentComponent prop. 
+			@coordinates-selected listens for $emit from child component MapBox and runs handleCoordinatesSelected method -->
 		<MapBox parent-component="ReportPotholeView" @coordinates-selected="handleCoordinatesSelected" />
 	</div>
 	<div>
 		<h1>Report a Pothole</h1>
-		<PotholeForm v-bind:pothole="pothole" v-bind:coordinates="selectedCoordinates" />
+		<PotholeForm v-bind:pothole="pothole" />
 	</div>
 </template>
 
