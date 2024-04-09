@@ -64,6 +64,19 @@ export default {
 			accessToken: mapboxgl.accessToken,
 			mapboxgl: mapboxgl,
 		});
+		
+		// Add Geolocation for user location to mapboxgl
+		this.map.addControl(
+        new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            // When active the map will receive updates to the device's location as it changes.
+            trackUserLocation: false,
+            // Draw an arrow next to the location dot to indicate which direction the device is heading.
+            showUserHeading: true
+        }));
+
 
 		// This adds plugin to map
 		this.map.addControl(geocoder);
@@ -101,14 +114,16 @@ export default {
 				// Create a new element in instance of map
 				const markerElement = document.createElement("div");
 				// Assign class to element to be affected by style sheet
-				markerElement.className = "mapboxgl-marker";
+				markerElement.className = "marker";
 				// Initialize marker with built in API mapboxgl.Marker method
-				this.marker = new mapboxgl.Marker(this.markerElement)
+				this.marker = new mapboxgl.Marker(markerElement, {offset: [-15, 1]})
 			}
 			// Assign coordinates to marker and add it to the map
+			
 				this.marker
 				.setLngLat(coords)
 				.addTo(this.map);
+				
 				
 		},
 		addAllMarkers(potholeList) {
@@ -117,14 +132,15 @@ export default {
 				// Create a new element in instance of map
 				const markerElement = document.createElement("div");
 				// Assign class to element to be affected by style sheet
-				markerElement.className = "mapboxgl-marker";
+				markerElement.className = "marker";
 				// Initialize marker with built in API mapboxgl.Marker method
-				const marker = new mapboxgl.Marker(this.markerElement)
+				const marker = new mapboxgl.Marker(markerElement, {offset: [-15, 1]})
 			
 			// Assign coordinates to marker and add it to the map
 				marker
 				.setLngLat([pothole.longitude, pothole.latitude])
 				.addTo(this.map);
+				
             }	
 		},
         getPotholeList() {
@@ -155,12 +171,13 @@ export default {
 }
 
 /* Set css style for marker */
-.mapboxgl-marker {
-	background-image: url('../assets/potholeMarker.png');
-	background-size: cover;
+.marker {
+	background-image: url('../assets/potholePointer.png');
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-color: transparent;
 	width: 50px;
-	height: 50px;
-	border-radius: 50%;
+	height:50px;
 	cursor: pointer;
 	position: absolute;
 
