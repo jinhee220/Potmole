@@ -7,8 +7,10 @@
     <div id="nav">
       <div class="left">
         <router-link class="link" v-bind:to="{ name: 'home' }">Home</router-link>
-        <router-link class="link" v-bind:to="{ name: 'PotholeList' }">Pothole List</router-link>
-        <router-link class="link" v-bind:to="{ name: 'ReportPothole' }">Report Pothole</router-link>
+        <router-link class="link" v-bind:to="{ name: 'PotholeList' }">Potholes</router-link>
+        <router-link class="link" v-bind:to="{ name: 'ReportPothole' }">Report a Pothole</router-link>
+        <router-link class="link" v-bind:to="{ name: 'home' }">About</router-link>
+        <router-link class="link" v-bind:to="{ name: 'home' }">Contact Us</router-link>
       </div>
 
       <div class="right">
@@ -35,16 +37,20 @@ export default {
 
 <!------------------------- STYLE ---------------------------------->
 <style scoped>
-.nav>div {
+#nav>div {
   display: inline-block;
+  padding-bottom: 5px;
+  border: 1px solid black;
 }
 
+
 .link {
-  color: rgb(78, 85, 85);
+  color: rgb(0, 0, 0);
   text-decoration: none;
-  font-size: 1.5rem;
-  padding: 10px;
-  border: 2px red solid;
+  font-size: 1.2rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* border: 2px rgb(0, 0, 0) solid; */
 }
 
 .left {
@@ -57,5 +63,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   flex-grow: 1;
+  float: right;
 }
+
 </style>
