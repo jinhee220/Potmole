@@ -15,6 +15,9 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 // Import Mapbox CSS
 import "mapbox-gl/src/css/mapbox-gl.css";
 
+// Import PotholeService
+import PotholeService from "@/services/PotholeService.js"
+
 export default {
 	data() {
 		return {
@@ -27,11 +30,17 @@ export default {
 			map: null,
 			// Set null marker variable to allow a single marker to be reassigned on click
 			marker: null,
+			// Set empty potholeList array
+			potholeList: [],
 		};
 	},
 	props: {
 		coordinates: {
 			type: Object,
+			required: true,
+		},
+		parentComponent: {
+			type: String,
 			required: true,
 		}
 	},
@@ -59,6 +68,12 @@ export default {
 		// This adds plugin to map
 		this.map.addControl(geocoder);
 
+		// Only allows the following code to run if component is being imported into PotholeList
+		if (this.parentComponent==='PotholeList') {
+		this.getPotholeList();
+		}
+		// Only allows the following code to run if component is being imported into ReportPotholeView
+		if (this.parentComponent==='ReportPotholeView'){
 
 		// This lets us click on map and get coordinates and call methods
 		this.map.on("click", (event) => {
@@ -74,6 +89,7 @@ export default {
 			// Send coordinates-selected event with updated coordinates for parent class to listen for
 			this.$emit("coordinates-selected", this.editCoordinates);
 		});
+	}
 	},
 
 	// Method to create an element for marker, instantiate marker, and add marker to map
@@ -94,7 +110,31 @@ export default {
 				.setLngLat(coords)
 				.addTo(this.map);
 				
-		}
+		},
+		addAllMarkers(potholeList) {
+			// Loop through potholeList and add a marker to the map for each pothole
+			for (const pothole of potholeList){
+				// Create a new element in instance of map
+				const markerElement = document.createElement("div");
+				// Assign class to element to be affected by style sheet
+				markerElement.className = "mapboxgl-marker";
+				// Initialize marker with built in API mapboxgl.Marker method
+				const marker = new mapboxgl.Marker(this.markerElement)
+			
+			// Assign coordinates to marker and add it to the map
+				marker
+				.setLngLat([pothole.longitude, pothole.latitude])
+				.addTo(this.map);
+            }	
+		},
+        getPotholeList() {
+            PotholeService.getPotholeList()
+                .then((response) => {
+                    this.potholeList = response.data;
+                    
+                    this.addAllMarkers(this.potholeList);
+                })
+        },
 
 	},
 

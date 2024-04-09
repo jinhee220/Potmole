@@ -2,7 +2,8 @@
 <template>
 	<div>
 		<h2>Click a Pothole Location</h2>
-		<MapBox @coordinates-selected="handleCoordinatesSelected" />
+		<!-- Call MapBox component and set parentComponent prop -->
+		<MapBox parent-component="ReportPotholeView" @coordinates-selected="handleCoordinatesSelected" />
 	</div>
 	<div>
 		<h1>Report a Pothole</h1>

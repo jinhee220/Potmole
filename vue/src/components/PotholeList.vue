@@ -1,4 +1,8 @@
 <template>
+    <div>
+        <!-- Call MapBox component and set parentComponent prop -->
+        <MapBox parent-component="PotholeList"/>
+    </div>
     <div class="pothole-container">
         <PotholeDetail v-bind:key="pothole.id" v-for="pothole in potholeList" v-bind:pothole="pothole" />
     </div>
@@ -7,6 +11,7 @@
 <script>
 import PotholeDetail from "../components/PotholeDetail.vue";
 import PotholeService from "@/services/PotholeService.js";
+import MapBox from "./MapBox.vue";
 
 export default {
     data() {
@@ -17,8 +22,9 @@ export default {
         }
     },
     components: {
-        PotholeDetail,
-    },
+    PotholeDetail,
+    MapBox
+},
     methods: {
         getPotholeList() {
             PotholeService.getPotholeList()
