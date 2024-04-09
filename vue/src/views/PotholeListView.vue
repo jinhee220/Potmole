@@ -1,4 +1,5 @@
 <template>
+	<div class="spacer"></div>
 	<div>
 		<PotholeList />
 	</div>
@@ -15,4 +16,8 @@ export default {
 
 </script>
 
-<style></style>
+<style>
+.spacer {
+	height: 1rem;
+}
+</style>

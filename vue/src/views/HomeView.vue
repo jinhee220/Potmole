@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div class="spacer"></div>
     <div class="logo">
       <img src="src\assets\image.png" />
     </div>
@@ -28,13 +29,16 @@ export default {
 
 }
 
+.spacer {
+  height: 1.5rem;
+}
+
 .home {
 
   background-image: url("src/assets/background.webp");
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100vh;
-  
+  height: 100vh;
 
 }
 
@@ -52,8 +56,6 @@ div>img {
 
   width: 60%;
   height: auto;
-
-
 }
 
 div>h2 {
@@ -72,7 +74,7 @@ div>h2 {
   color: rgb(0, 0, 0);
   font-weight: bolder;
   text-align: left;
-  
+
 }
 
 .box h3 {
@@ -92,9 +94,9 @@ div>h2 {
   border-radius: 10px;
   border-left: 10px solid #E8E2DD;
   border-bottom: .5px solid #E8E2DD;
-  
 
-  
+
+
 
 }
 </style>

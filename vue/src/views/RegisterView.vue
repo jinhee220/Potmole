@@ -1,4 +1,5 @@
 <template>
+  <div class="spacer"></div>
   <div id="register" class="text-center">
     <form v-on:submit.prevent="register">
       <h1>Create Account</h1>
@@ -73,9 +74,14 @@ export default {
 </script>
 
 <style scoped>
+.spacer {
+  height: 1rem;
+}
+
 .form-input-group {
   margin-bottom: 1rem;
 }
+
 label {
   margin-right: 0.5rem;
 }

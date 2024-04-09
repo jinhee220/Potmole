@@ -2,7 +2,6 @@
 <!------------------------- TEMPLATE -------------------------------->
 <template>
   <div id="capstone-app">
-
     <!-- Links / Nav Bar / Header -->
     <div id="nav">
       <div class="left">
@@ -20,7 +19,7 @@
       </div>
     </div>
 
-    <router-view />
+    <router-view id="views" />
 
   </div>
 </template>
@@ -37,12 +36,33 @@ export default {
 
 <!------------------------- STYLE ---------------------------------->
 <style scoped>
-#nav>div {
-  display: inline-block;
-  padding-bottom: 5px;
-  border: 1px solid black;
+#capstone-app {
+  height: 80rem;
 }
 
+#views {
+  margin: -5% 0% 0% 0%;
+  height: 100%;
+  width: 100%;
+}
+
+#nav {
+  display: flex;
+  background-color: #E8E2DD;
+  opacity: .7;
+  border-radius: 10px;
+  height: 40px;
+  width: 98%;
+  margin: auto;
+  align-content: center;
+}
+
+#nav>div {
+  display: inline-block;
+  align-self: center;
+  /* changed padding below to do a flex align so that borders can be respected */
+  justify-content: space-between;
+}
 
 .link {
   color: rgb(0, 0, 0);
@@ -55,15 +75,18 @@ export default {
 
 .left {
   display: flex;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
   flex-grow: 1;
+  border-radius: inherit;
+  flex-wrap: nowrap;
 }
 
 .right {
   display: flex;
-  justify-content: flex-end;
-  flex-grow: 1;
-  float: right;
+  /* justify-content: flex-end; */
+  flex-grow: 0;
+  /* float: right; */
+  border-radius: inherit;
+  flex-wrap: nowrap;
 }
-
 </style>

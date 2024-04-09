@@ -1,5 +1,6 @@
 <!-- this is where site visitors can report a pothole AND a pothole object is sent to server -->
 <template>
+	<div class="spacer"></div>
 	<div>
 		<h2>Click a Pothole Location</h2>
 		<!-- Call MapBox component and set parentComponent prop. 
@@ -46,4 +47,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.spacer {
+	height: 1rem;
+}
+</style>
