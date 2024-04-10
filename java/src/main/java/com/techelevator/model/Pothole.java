@@ -13,6 +13,9 @@ public class Pothole {
     private String inspectedDate;
     private String repairedDate;
 
+    // adding severity property
+    private String severity;
+
     public Pothole(int userId, BigDecimal latitude, BigDecimal longitude, String currentStatus, String reportedDate, String inspectedDate, String repairedDate) {
         //this.potHoleId = potHoleId;
         this.userId = userId;
@@ -22,6 +25,8 @@ public class Pothole {
         this.reportedDate = reportedDate;
         this.inspectedDate = inspectedDate;
         this.repairedDate = repairedDate;
+        // adding severity to constructor
+        this.severity = severity;
     }
     public Pothole(){
 
@@ -88,5 +93,14 @@ public class Pothole {
 
     public void setRepairedDate(String repairedDate) {
         this.repairedDate = repairedDate;
+    }
+
+    // adding getter and setter for severity add-on
+    public String getSeverity() {
+        return severity;
+    }
+
+    public void setSeverity(String severity) {
+        this.severity = severity;
     }
 }

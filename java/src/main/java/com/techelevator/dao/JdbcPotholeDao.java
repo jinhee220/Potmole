@@ -18,7 +18,8 @@ public class JdbcPotholeDao implements PotholeDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
+    //
+    // DO WE NEED A COMPONENT OVERRIDE HERE?
 
     //Stubbed out to avoid errors, not yet implemented
     public List<Pothole> getListOfPotholes(){
@@ -70,15 +71,16 @@ public class JdbcPotholeDao implements PotholeDao{
         Pothole createdPothole = null;
 
         String sql = "INSERT INTO potholes " +
-                "(user_id, latitude, longitude, current_status, reported_date, inspected_date, repaired_date) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?) " +
+                "(user_id, latitude, longitude, current_status, reported_date, inspected_date, repaired_date, severity) " +     // added severity to list
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?) " +                                                                            // add another "?" for severity
                 "RETURNING pothole_id;";
 
         try {
              int potholeId =
                      jdbcTemplate.queryForObject(sql, int.class, newPothole.getUserId(), newPothole.getLatitude(),
                              newPothole.getLongitude(), newPothole.getCurrentStatus(),
-                             newPothole.getReportedDate(), newPothole.getInspectedDate(), newPothole.getRepairedDate());
+                             newPothole.getReportedDate(), newPothole.getInspectedDate(), newPothole.getRepairedDate(),
+                             newPothole.getSeverity());                                                                          // added severity property
 
              createdPothole = getPotholeById(potholeId);
 
@@ -91,8 +93,74 @@ public class JdbcPotholeDao implements PotholeDao{
             throw new DaoException("Data integrity violation", e);
 
         }
+
         return createdPothole;
     }
+
+    @Override
+    public Pothole updatePothole (Pothole updatedPothole) {
+
+        Pothole newPothole = null;
+
+        String sql = "UPDATE potholes SET current_status = ?, inspected_date = ?, repaired_date = ?, severity = ? WHERE pothole_id = ?;";
+
+        try {
+
+            int numberOfRows = jdbcTemplate.update(sql, updatedPothole.getCurrentStatus(), updatedPothole.getInspectedDate(), updatedPothole.getRepairedDate(), updatedPothole.getSeverity());
+
+            if(numberOfRows == 0) {
+
+                throw new DaoException("Update failed, no change to rows in database.");
+
+            } else {
+
+                newPothole = getPotholeById(updatedPothole.getPotHoleId());
+
+            }
+
+        } catch (CannotGetJdbcConnectionException e) {
+
+            throw new DaoException("Unable to connect to server or database", e);
+
+        } catch (DataIntegrityViolationException e) {
+
+            throw new DaoException("Data integrity violation", e);
+
+        }
+
+        return newPothole;
+    }
+
+
+
+    @Override
+    public int deletePotholeById (int id) {
+        int numberOfRows = 0;
+
+        String sql = "DELETE FROM potholes WHERE pothole_id = ?;";
+
+        try {
+
+            numberOfRows = jdbcTemplate.update(sql, id);
+
+        } catch (CannotGetJdbcConnectionException e) {
+
+            throw new DaoException("Unable to connect to server or database", e);
+
+        } catch (DataIntegrityViolationException e) {
+
+            throw new DaoException("Data integrity violation", e);
+
+        }
+
+        return numberOfRows;
+    }
+
+
+
+
+
+
 
     private Pothole mapRowToPothole (SqlRowSet rs) {
 
@@ -106,6 +174,7 @@ public class JdbcPotholeDao implements PotholeDao{
         p.setReportedDate(rs.getString("reported_date"));
         p.setInspectedDate(rs.getString("inspected_date"));
         p.setRepairedDate(rs.getString("repaired_date"));
+        p.setSeverity(rs.getString("severity"));                                                                            // adding severity to map to row function
 
         return p;
     }

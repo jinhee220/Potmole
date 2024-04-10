@@ -21,4 +21,18 @@ public class PotholeService {
     public List<Pothole> getListOfPotholes(){
         return potholeDao.getListOfPotholes();
     }
+
+    // ADDING NEW REFERENCE FOR UPDATING POTHOLE, FOLLOWING PATTERN FROM ABOVE
+
+    public Pothole updatePothole(Pothole updatedPothole) {
+        return potholeDao.updatePothole(updatedPothole);
+    }
+
+    // ADDING NEW REFERENCE FOR DELETING POTHOLE, FOLLOWING PATTERN FROM ABOVE
+
+    public int deletePotholeById (int id) {
+        return potholeDao.deletePotholeById(id);
+    }
+
+
 }

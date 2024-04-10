@@ -61,7 +61,41 @@ public class PotholeController {
 
         }
 
+    }
 
+    // ADDING NEW METHOD FOR UPDATING POTHOLE, FOLLOWING PATTERN FROM CREATE POTHOLE ABOVE
+
+    @RequestMapping(path = "/updatePothole", method = RequestMethod.PUT)
+    public Pothole updatePothole (@Valid @RequestBody Pothole updatedPothole) {
+
+        try {
+
+            return potholeService.updatePothole(updatedPothole);
+
+        } catch (DaoException e) {
+
+            throw new ResponseStatusException((HttpStatus.BAD_REQUEST), e.getMessage());
+
+        }
 
     }
+
+
+    // ADDING NEW METHOD FOR DELETING POTHOLE, FOLLOWING PATTERN FROM CREATE POTHOLE ABOVE
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/deletePothole", method = RequestMethod.DELETE)
+    public int deletePotholeById (int id) {
+
+        try {
+
+            return potholeService.deletePotholeById(id);
+
+        } catch (DaoException e) {
+
+            throw new ResponseStatusException((HttpStatus.BAD_REQUEST), e.getMessage());
+
+        }
+    }
+
 }

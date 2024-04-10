@@ -19,11 +19,24 @@ CREATE TABLE potholes (
 	reported_date varchar(20) NOT NULL,
 	inspected_date varchar(20),
 	repaired_date varchar(20),
+	severity varchar(20) NOT NULL,
 	CONSTRAINT PK_potholes PRIMARY KEY (pothole_id),
 	CONSTRAINT FK_users_potholes FOREIGN KEY (user_id) REFERENCES users (user_id)
 	
 	
 );
+
+CREATE TABLE appointments (
+    appointment_id SERIAL,
+    pothole_id int NOT NULL,
+    user_id int NOT NULL,
+    appointment_type varchar(20) NOT NULL,          -- inspection, repair
+    appointment_date varchar(20) NOT NULL,          -- string date
+    completion_status varchar(20) NOT NULL,         -- complete, incomplete
+    CONSTRAINT PK_appointment_id PRIMARY KEY (appointment_id),
+    CONSTRAINT FK_pothole_id FOREIGN KEY (pothole_id) REFERENCES potholes (pothole_id),
+    CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users (user_id)
+)
 
 
 
