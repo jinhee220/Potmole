@@ -9,7 +9,7 @@
 	</div>
 	<div>
 		<h1>Report a Pothole</h1>
-		<PotholeForm v-bind:pothole="pothole" />
+		<PotholeForm v-bind:pothole="pothole" v-bind:streetAddress="streetAddress" />
 	</div>
 </template>
 
@@ -34,7 +34,9 @@ export default {
 				reportedDate: new Date().toDateString(),
 				inspectedDate: "Not Inspected Yet",
 				repairedDate: "Not Repaired Yet",
-			}
+				severity: ""
+			},
+			streetAddress: ''
 		};
 	},
 	methods: {
@@ -42,6 +44,8 @@ export default {
 
 			this.pothole.longitude = coordinates.longitude;
 			this.pothole.latitude = coordinates.latitude;
+
+			this.streetAddress = coordinates.streetAddress;
 		},
 	},
 };

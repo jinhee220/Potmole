@@ -12,6 +12,6 @@ VALUES
 INSERT INTO 
 	potholes (user_id, latitude, longitude, current_status, reported_date, inspected_date, repaired_date, severity)     -- added severity property
 VALUES
-	(1, 45.0000, -85.3124, 'inspected', '4-2-2024', '4-3-2024', '', 'moderate');                                        -- added "moderate" to test data
+	(1, 45.0000, -85.3124, 'inspected', '4-2-2024', '4-3-2024', '', 'moderate');                                        -- added "moderate" to test data;
 
 COMMIT TRANSACTION;

@@ -8,6 +8,7 @@
 		<div class="form-group">
 			<h3>Longitude: {{ editPothole.longitude }}</h3>
 			<h3>Latitude: {{ editPothole.latitude }}</h3>
+			<h3>Street Address: {{ streetAddress }}</h3>
 			<h3>Date: {{ editPothole.reportedDate }}</h3>
 			<button type="submit">Submit</button>
 		</div>
@@ -33,6 +34,9 @@ export default {
 			type: Object,
 			required: true,
 		},
+		streetAddress: {
+			type: String,
+		}
 	},
 
 	computed: {
@@ -47,6 +51,7 @@ export default {
 				reportedDate: this.pothole.reportedDate,
 				inspectedDate: this.pothole.inspectedDate,
 				repairedDate: this.pothole.repairedDate,
+				severity: this.pothole.severity
 			}
 		},
 	},

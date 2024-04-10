@@ -36,7 +36,7 @@ CREATE TABLE appointments (
     CONSTRAINT PK_appointment_id PRIMARY KEY (appointment_id),
     CONSTRAINT FK_pothole_id FOREIGN KEY (pothole_id) REFERENCES potholes (pothole_id),
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users (user_id)
-)
+);
 
 
 
