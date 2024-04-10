@@ -10,6 +10,7 @@
         <router-link class="link" v-bind:to="{ name: 'ReportPothole' }">Report a Pothole</router-link>
         <router-link class="link" v-bind:to="{ name: 'home' }">About</router-link>
         <router-link class="link" v-bind:to="{ name: 'home' }">Contact Us</router-link>
+        <router-link class="link" v-bind:to="{ name: 'EmployeeForm' }">Employee</router-link>
       </div>
 
       <div class="right">

@@ -9,6 +9,7 @@
 		<h3>Inspected Date: {{ pothole.inspectedDate }}</h3>
 		<h3>Repaired Date: {{ pothole.repairedDate }}</h3>
 	</div>
+	
 </template>
 
 <script>

@@ -8,6 +8,7 @@ import LogoutView from "../views/LogoutView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import ReportPotholeView from "../views/ReportPotholeView.vue";
 import PotholeListView from "../views/PotholeListView.vue";
+import EmployeeFormView from "../views/EmployeeFormView.vue"
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -62,7 +63,14 @@ const routes = [
 		path: "/potholes",
 		name: "PotholeList",
 		component: PotholeListView
-	}
+	},
+	{
+		path: "/employee",
+		name: "EmployeeForm",
+		component: EmployeeFormView
+	},
+
+
 ];
 
 // Create the router
