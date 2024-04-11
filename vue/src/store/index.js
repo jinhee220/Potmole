@@ -42,11 +42,20 @@ export function createStore(currentToken, currentUser) {
       
 
       },
-      UPDATE_POTHOLE_LIST(state){
+      async UPDATE_POTHOLE_LIST(state){
         PotholeService.getPotholeList()
-        .then((response) => {
-            state.potholeList = response.data;
+        .then((response) => { 
+          
+            state.potholeList =  response.data;
         });
+
+      //   try{
+      //     const response = await PotholeService.getPotholeList();
+      //     this.state.potholeList = response;
+      //   }
+      //   catch(error){
+      //     console.error('Error fetching data')
+      //   }
       }
     },
   });

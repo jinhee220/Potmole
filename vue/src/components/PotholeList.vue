@@ -29,7 +29,7 @@ export default {
 
     },
     created() {
-        this.$store.commit("UPDATE_POTHOLE_LIST")
+        this.$store.commit("UPDATE_POTHOLE_LIST");
     },
 }
 

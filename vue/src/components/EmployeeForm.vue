@@ -37,7 +37,7 @@ export default {
         return {
             showForm: false,
             updatedPothole: {
-                potHoleId: this.pothole.id,
+                potHoleId: this.pothole.potHoleId,
                 userId: this.$store.state.user.id,
                 longitude: this.pothole.longitude,
                 latitude: this.pothole.latitude,
@@ -66,9 +66,9 @@ export default {
                 .updatePothole(this.updatedPothole)
                 .then(response => {
 
-                    if (response.status === 201) {
+                    if (response.status === 200) {
                         //this.$store.commit();
-                        this.$router.push({ name: "EmployeeForm" });
+                        this.$router.push({ name: "home" });
                     }
                 })
                 .catch(error => {
