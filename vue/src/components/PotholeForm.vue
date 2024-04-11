@@ -44,8 +44,8 @@ export default {
 		// Since props are a read-only, creating an object that can be acted on
 		editPothole() {
 			return {
-				userId: this.pothole.userId,
-				longitude: this.pothole.longitude,
+				userId: this.$store.state.user.id,
+				longitude: this.$store.state.pothole.longitude,
 				latitude: this.pothole.latitude,
 				currentStatus: "Reported",
 				reportedDate: this.pothole.reportedDate,
@@ -71,7 +71,7 @@ export default {
 			PotholeService
 				.addPothole(this.editPothole)
 				.then(response => {
-					
+
 					if (response.status === 201) {
 						//this.$store.commit();
 						this.$router.push({ name: "home" });

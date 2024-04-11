@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 import com.techelevator.model.Pothole;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface PotholeDao {
@@ -12,6 +13,7 @@ public interface PotholeDao {
 
     Pothole updatePothole (Pothole updatedPothole);
 
+    Pothole getPotholeIdByLatLon (BigDecimal lat, BigDecimal lon);
 
     int deletePotholeById (int id);
 

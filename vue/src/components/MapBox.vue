@@ -19,7 +19,7 @@ import "mapbox-gl/src/css/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
 
 // Import PotholeService
-import PotholeService from "@/services/PotholeService.js"
+import PotholeService from "../services/PotholeService.js"
 
 export default {
 	data() {
@@ -62,7 +62,7 @@ export default {
 		});
 
 		// Check if geolocation is available for the user's browser
-		if (navigator.geolocation){
+		if (navigator.geolocation) {
 			// Get user's current position
 			navigator.geolocation.getCurrentPosition(
 				(position) => {
@@ -75,7 +75,7 @@ export default {
 				}
 			)
 		}
-		
+
 		// Add the geocoder control to the map
 		const geocoder = new MapboxGeocoder({
 			accessToken: mapboxgl.accessToken,
@@ -108,7 +108,7 @@ export default {
 			// This lets us click on map and get coordinates and call methods
 			this.map.on("click", (event) => {
 				const coords = event.lngLat;
-				
+
 
 				// Call method that adds marker to the map
 				this.addMarker(coords);
@@ -193,7 +193,7 @@ export default {
 			// Fetch is a built in javascript function that is used to make HTTP Requests. It takes in a full url
 			// Our fetch requires the base api url and our access token to prove our right to access the information
 			fetch(`${apiUrl}?access_token=${accessToken}`)
-			// The fetch method sends a requests for data from the URL and returns it as a response that we convert into json for easier manipulation
+				// The fetch method sends a requests for data from the URL and returns it as a response that we convert into json for easier manipulation
 				.then((response) => response.json())
 				.then((data) => {
 					// The returned data is an object containing nested objects that we branch through to reach our 'place_name', a property that contains a full street address

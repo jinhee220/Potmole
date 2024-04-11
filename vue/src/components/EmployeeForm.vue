@@ -1,6 +1,6 @@
 <template>
     <div class="employee">
-        <button v-on:click.prevent="toggleForm" >Toggle Form</button>
+        <button v-on:click.prevent="toggleForm">Toggle Form</button>
         <form v-show="showForm" v-on:submit.prevent="submitForm">
             <div class="field">
                 <label for="currentStatus">Status: </label>
@@ -23,7 +23,7 @@
                 <label for="severity">Severity: </label>
                 <input type="text" id="severity" name="severity" v-model="updatedPothole.severity" />
             </div>
-            <button type="submit" >Submit</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
 </template>
@@ -37,7 +37,7 @@ export default {
         return {
             showForm: false,
             updatedPothole: {
-                potholeId: this.pothole.id,
+                potHoleId: this.pothole.id,
                 userId: this.$store.state.user.id,
                 longitude: this.pothole.longitude,
                 latitude: this.pothole.latitude,
@@ -60,25 +60,25 @@ export default {
         toggleForm() {
             this.showForm = !this.showForm;
         },
-        submitForm(){
+        submitForm() {
 
             PotholeService
-				.updatePothole(this.updatedPothole)
-				.then(response => {
-					
-					if (response.status === 201) {
-						//this.$store.commit();
-						this.$router.push({ name: "EmployeeForm" });
-					}
-				})
-				.catch(error => {
-					this.handleErrorResponse(error, 'updating');
-				});
+                .updatePothole(this.updatedPothole)
+                .then(response => {
+
+                    if (response.status === 201) {
+                        //this.$store.commit();
+                        this.$router.push({ name: "EmployeeForm" });
+                    }
+                })
+                .catch(error => {
+                    this.handleErrorResponse(error, 'updating');
+                });
 
         },
         handleErrorResponse(error, verb) {
-			// store implementation needed to proceed
-		}
+            // store implementation needed to proceed
+        }
     },
     // computed: {
 

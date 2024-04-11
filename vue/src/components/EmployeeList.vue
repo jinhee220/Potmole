@@ -1,10 +1,10 @@
 <template>
-        <div class="pothole-container">
-            <PotholeDetail v-bind:key="pothole.id" v-for="pothole in potholeList" v-bind:pothole="pothole" />
-        </div>
-        <div class="pothole-container">
-            <EmployeeForm v-bind:key="pothole.id" v-for="pothole in potholeList" v-bind:pothole="pothole" />
-        </div>
+    <div class="pothole-container">
+        <PotholeDetail v-bind:key="pothole.id" v-for="pothole in potholeList" v-bind:pothole="pothole" />
+    </div>
+    <div class="pothole-container">
+        <EmployeeForm v-bind:key="pothole.id" v-for="pothole in potholeList" v-bind:pothole="pothole" />
+    </div>
 </template>
 
 <script>

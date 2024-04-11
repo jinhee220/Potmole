@@ -1,11 +1,25 @@
 import { createStore as _createStore } from 'vuex';
 import axios from 'axios';
+//not sure if this is allowed
+import PotholeService from "../services/PotholeService.js";
 
 export function createStore(currentToken, currentUser) {
   let store = _createStore({
     state: {
       token: currentToken || '',
-      user: currentUser || {}
+      user: currentUser || {},
+      potholeList: [],
+      pothole: {
+        potHoleId: 0,
+				userId: 0,
+				longitude: null,
+				latitude: null,
+				currentStatus: "reported",
+				reportedDate: new Date().toDateString(),
+				inspectedDate: "Not Inspected Yet",
+				repairedDate: "Not Repaired Yet",
+				severity: ""
+			}
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -23,6 +37,16 @@ export function createStore(currentToken, currentUser) {
         state.token = '';
         state.user = {};
         axios.defaults.headers.common = {};
+      },
+      UPDATE_COORDINATES(coordinates){
+      
+
+      },
+      UPDATE_POTHOLE_LIST(state){
+        PotholeService.getPotholeList()
+        .then((response) => {
+            state.potholeList = response.data;
+        });
       }
     },
   });

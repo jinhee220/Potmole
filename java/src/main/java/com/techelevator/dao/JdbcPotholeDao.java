@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +38,22 @@ public class JdbcPotholeDao implements PotholeDao{
         return potholes;
     }
 
+    // get pothole by lat lon for employeeForm
+    public Pothole getPotholeIdByLatLon (BigDecimal lat, BigDecimal lon) {
+        Pothole pothole = null;
+        String sql = "SELECT pothole_id FROM potholes WHERE latitude = ? AND longitude = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, lat, lon);
+            while (results.next()) {
 
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+
+
+        return pothole;
+    }
 
 
     @Override
