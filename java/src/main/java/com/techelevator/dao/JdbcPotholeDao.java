@@ -102,15 +102,22 @@ public class JdbcPotholeDao implements PotholeDao{
 
         Pothole newPothole = null;
 
-        String sql = "UPDATE potholes SET current_status = ?, inspected_date = ?, repaired_date = ?, severity = ? WHERE pothole_id = ?;";
+        String sql = "UPDATE potholes " +
+                "SET current_status = ?, inspected_date = ?, repaired_date = ?, severity = ? " +
+                "WHERE pothole_id = ?;";
 
         try {
+            String status = updatedPothole.getCurrentStatus();
+            String inspected = updatedPothole.getInspectedDate();
+            String repaired = updatedPothole.getRepairedDate();
+            String severity = updatedPothole.getSeverity();
+            int id = updatedPothole.getPotHoleId();
 
-            int numberOfRows = jdbcTemplate.update(sql, updatedPothole.getCurrentStatus(), updatedPothole.getInspectedDate(), updatedPothole.getRepairedDate(), updatedPothole.getSeverity());
+            int numberOfRows = jdbcTemplate.update(sql, status, inspected, repaired, severity, id);
 
             if(numberOfRows == 0) {
 
-                throw new DaoException("Update failed, no change to rows in database.");
+                throw new DaoException( "Update failed, no change to rows in database.");
 
             } else {
 

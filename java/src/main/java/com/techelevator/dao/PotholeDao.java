@@ -12,6 +12,7 @@ public interface PotholeDao {
 
     Pothole updatePothole (Pothole updatedPothole);
 
+
     int deletePotholeById (int id);
 
 
