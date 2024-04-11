@@ -8,5 +8,8 @@ export default {
   getPotholeList() {
     return axios.get('/getAllPotholes')
   },
+  updatePothole(pothole) {
+    return axios.put('/updatePothole/', pothole);
+  }
 
 }

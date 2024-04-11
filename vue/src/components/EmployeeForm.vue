@@ -29,6 +29,9 @@
 </template>
 
 <script>
+
+import PotholeService from '../services/PotholeService';
+
 export default {
     data() {
         return {
@@ -59,7 +62,23 @@ export default {
         },
         submitForm(){
 
+            PotholeService
+				.updatePothole(this.updatedPothole)
+				.then(response => {
+					
+					if (response.status === 201) {
+						//this.$store.commit();
+						this.$router.push({ name: "EmployeeForm" });
+					}
+				})
+				.catch(error => {
+					this.handleErrorResponse(error, 'updating');
+				});
+
         },
+        handleErrorResponse(error, verb) {
+			// store implementation needed to proceed
+		}
     },
     // computed: {
 
