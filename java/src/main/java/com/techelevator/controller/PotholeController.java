@@ -84,8 +84,8 @@ public class PotholeController {
     // ADDING NEW METHOD FOR DELETING POTHOLE, FOLLOWING PATTERN FROM CREATE POTHOLE ABOVE
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/deletePothole", method = RequestMethod.DELETE)
-    public int deletePotholeById (int id) {
+    @RequestMapping(path = "/deletePothole/{id}", method = RequestMethod.DELETE)
+    public int deletePotholeById (@PathVariable int id) {
 
         try {
 

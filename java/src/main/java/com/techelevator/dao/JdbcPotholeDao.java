@@ -38,7 +38,7 @@ public class JdbcPotholeDao implements PotholeDao{
         return potholes;
     }
 
-    // get pothole by lat lon for employeeForm
+    // get pothole by lat lon for employeeForm - might not need
     public Pothole getPotholeIdByLatLon (BigDecimal lat, BigDecimal lon) {
         Pothole pothole = null;
         String sql = "SELECT pothole_id FROM potholes WHERE latitude = ? AND longitude = ?;";
