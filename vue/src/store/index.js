@@ -19,7 +19,8 @@ export function createStore(currentToken, currentUser) {
 				inspectedDate: "Not Inspected Yet",
 				repairedDate: "Not Repaired Yet",
 				severity: ""
-			}
+			},
+      streetAddress: '',
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {

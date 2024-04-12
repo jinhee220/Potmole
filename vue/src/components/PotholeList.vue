@@ -14,13 +14,13 @@ import PotholeService from "../services/PotholeService.js";
 import MapBox from "./MapBox.vue";
 
 export default {
-    data() {
-        return {
+    computed: {
             //call the PotholeService.js here
-            potholeList: this.$store.state.potholeList,
+            potholeList() {
+                return this.$store.state.potholeList
             //PotholeService.getPotholeList()
-        }
     },
+},
     components: {
         PotholeDetail,
         MapBox

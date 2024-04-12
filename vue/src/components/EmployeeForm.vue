@@ -1,19 +1,24 @@
 <template>
     <div class="employee">
-        <button v-on:click.prevent="toggleForm">Toggle Form</button>
-        <form v-show="showForm" v-on:submit.prevent="submitForm">
+        <form v-on:submit.prevent="submitForm">
+            <h3>Pothole ID: {{ updatedPothole.potHoleId }}</h3>
             <div class="field">
-                <label for="currentStatus">Status: </label>
-                <select id="currentStatus" name="currentStatus" size="4" v-model="updatedPothole.currentStatus">
+            <label for="currentStatus">Status: </label>
+            <div class="dropdown">
+                <div class="dropdown-content">
+                <select id="currentStatus" name="currentStatus" v-model="updatedPothole.currentStatus" @change="toggleDropdown">
                     <option value="reported">Reported</option>
                     <option value="inspected">Inspected</option>
                     <option value="repaired">Repaired</option>
                     <option value="deleted">Deleted</option>
                 </select>
+                </div>
             </div>
+            </div>
+                
             <div class="field">
                 <label for="inspectedDate">Date Inspected: </label>
-                <input type="text" id="inspectedDate" name="inspectedDate" v-model="updatedPothole.inspectedDate" />
+                <input type="text" id="inspectedDate" name="inspectedDate" v-model="updatedPothole.inspectedDate"/>
             </div>
             <div class="field">
                 <label for="repairedDate">Date Repaired: </label>
@@ -36,17 +41,7 @@ export default {
     data() {
         return {
             showForm: false,
-            updatedPothole: {
-                potHoleId: this.pothole.potHoleId,
-                userId: this.$store.state.user.id,
-                longitude: this.pothole.longitude,
-                latitude: this.pothole.latitude,
-                currentStatus: "",
-                reportedDate: this.pothole.reportedDate,
-                inspectedDate: "",
-                repairedDate: "",
-                severity: ""
-            }
+            isDropdownOpen: false,
         }
     },
     props: {
@@ -56,7 +51,27 @@ export default {
             required: true,
         },
     },
+    computed: {
+            updatedPothole() {
+                return {
+                potHoleId: this.pothole.potHoleId,
+                userId: this.$store.state.user.id,
+                longitude: this.pothole.longitude,
+                latitude: this.pothole.latitude,
+                currentStatus: this.pothole.currentStatus,
+                reportedDate: this.pothole.reportedDate,
+                inspectedDate: this.pothole.inspectedDate,
+                repairedDate: this.pothole.repairedDate,
+                severity: this.pothole.severity
+            }
+        }
+        
+    },
     methods: {
+        // Toggle's whether the selection menu acts as a dropdown, activated on using the dropdown
+        toggleDropdown(){
+            this.isDropdownOpen = !this.isDropdownOpen;
+        },
         toggleForm() {
             this.showForm = !this.showForm;
         },

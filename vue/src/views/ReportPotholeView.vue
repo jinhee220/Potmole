@@ -1,7 +1,6 @@
 <!-- this is where site visitors can report a pothole AND a pothole object is sent to server -->
 <template>
 	<div class="spacer"></div>
-	{{ this.$store.state.pothole.latitude }}
 	<div>
 		<h2>Click a Pothole Location</h2>
 		<!-- Call MapBox component and set parentComponent prop. 
@@ -34,7 +33,7 @@ export default {
 
 			this.$store.state.pothole.longitude = coordinates.longitude;
 			this.$store.state.pothole.latitude = coordinates.latitude;
-			this.$store.streetAddress = coordinates.streetAddress;
+			this.$store.state.streetAddress = coordinates.streetAddress;
 		},
 	},
 };

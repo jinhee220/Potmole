@@ -1,7 +1,7 @@
 <template>
-    <div class="pothole-container">
+    <!-- <div class="pothole-container">
         <PotholeDetail v-bind:key="pothole.potHoleId" v-for="pothole in potholeList" v-bind:pothole="pothole" />
-    </div>
+    </div> -->
     <div class="pothole-container">
         <EmployeeForm v-bind:key="pothole.potHoleId" v-for="pothole in potholeList" v-bind:pothole="pothole" />
     </div>

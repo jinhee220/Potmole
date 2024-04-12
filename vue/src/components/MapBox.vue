@@ -14,9 +14,9 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 
 // Import Mapbox CSS
-import "mapbox-gl/src/css/mapbox-gl.css";
+import "../style/mapbox-gl.css";
 // Import Mapbox-Geocoder CSS
-import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
+import "../style/mapbox-gl-geocoder.css"
 
 // Import PotholeService
 import PotholeService from "../services/PotholeService.js"
@@ -49,6 +49,9 @@ export default {
 		}
 	},
 	mounted() {
+		// Update the potholeList in store
+		this.$store.commit("UPDATE_POTHOLE_LIST");
+
 		// Set your Mapbox access token
 		mapboxgl.accessToken =
 			"pk.eyJ1IjoidGVzdHltY3Rlc3RmYWNlIiwiYSI6ImNsdW1wcjE5NjB3aGUyaW1scGVtb2R4YjIifQ._vhnmLy-i4syL82KbkdyDA";
@@ -95,11 +98,11 @@ export default {
 			}));
 
 
-		// This adds plugin to map
+		// This adds Geocoder plugin to map
 		this.map.addControl(geocoder);
 
 		// Only allows the following code to run if component is being imported into PotholeList
-		if (this.parentComponent === 'PotholeList') {
+		if (this.parentComponent === 'PotholeList' || this.parentComponent==='EmployeeFormView') {
 			this.getPotholeList();
 		}
 		// Only allows the following code to run if component is being imported into ReportPotholeView
@@ -113,17 +116,21 @@ export default {
 				// Call method that adds marker to the map
 				this.addMarker(coords);
 
+				// Update street address property of editCoordinates by feeding clicked coordinates
+				// Currently is one click behind; NEEDS FIXING 
+				this.reverseGeocode(coords);
 				// Update longitude and latitude properties of editCoordinates with clicked coordinates
 				this.editCoordinates.longitude = coords.lng.toFixed(5);
 				this.editCoordinates.latitude = coords.lat.toFixed(5);
-				// Update street address property of editCoordinates by feeding clicked coordinates 
-				this.reverseGeocode(coords);
+
 
 				// Send coordinates-selected event with updated coordinates for parent class to listen for
 				this.$emit("coordinates-selected", this.editCoordinates);
 
 			});
 		}
+
+		
 	},
 
 	// Method to create an element for marker, instantiate marker, and add marker to map
@@ -156,25 +163,41 @@ export default {
 				const marker = new mapboxgl.Marker(markerElement, { offset: [-15, 1] })
 
 
+				marker.getElement().addEventListener("click", () => {
+            // Emit the potholeId when the marker is clicked
+            this.$emit("setPotholeId", pothole.potHoleId);
+        });
 
 				// Assign coordinates to marker and add it to the map
 				marker
 					.setLngLat([pothole.longitude, pothole.latitude])
 					//Add popup on marker click
-					.setPopup(
-						new mapboxgl.Popup({ offset: [100, 100] }) // add popups
-							.setHTML(
-								`<h3>${pothole.currentStatus}</h3>
-		<p>${pothole.reportedDate}</p>
-		<p>${pothole.inspectedDate}</p>
-		<p>${pothole.repairedDate}</p>`
-							)
-					)
 					.addTo(this.map);
+
+
+				// If component is not a child of EmployeeFormView, add popup to marker
+				if (this.parentComponent!=="EmployeeFormView"){
+				// Create Popup const that will be assigned to each marker
+				const detailPopup = this.createUserPopup(pothole);
+				marker.setPopup(detailPopup)
+				}
 			}
-
-
 		},
+		createUserPopup(pothole) {
+			return new mapboxgl.Popup({ offset: [-150, 100] }) // add popups
+				.setHTML(
+					`<div class='popup_details'>
+						<h3 class='popup_id'>Pothole ID: ${pothole.potHoleId}</h3>
+						<p class='popup_status'>Status: ${pothole.currentStatus}</p>
+						<p class='popup_street_address'>${this.editCoordinates.streetAddress}</p>
+						<p class='popup_reported_date'>Reported Date: ${pothole.reportedDate}</p>
+						<p class='popup_inspected_date'>Inspected Date: ${pothole.inspectedDate}</p>
+						<p class='popup_repaired_date'>Repaired Date: ${pothole.repairedDate}</p>
+						<p class='popup_severity'>Severity: ${pothole.severity}</p>
+						</div>`
+				);
+		},
+
 		getPotholeList() {
 			PotholeService.getPotholeList()
 				.then((response) => {
@@ -206,16 +229,21 @@ export default {
 		},
 
 	},
+	
 
 };
 </script>
 
 <style>
+
+
 .map {
 	width: 100%;
 	height: 400px;
 
 }
+
+
 
 .map-container {
 	width: 100%;

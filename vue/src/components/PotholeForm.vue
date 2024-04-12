@@ -8,7 +8,7 @@
 		<div class="form-group">
 			<h3>Longitude: {{ editPothole.longitude }}</h3>
 			<h3>Latitude: {{ editPothole.latitude }}</h3>
-			<h3>Street Address: {{ streetAddress }}</h3>
+			<h3>Street Address: {{ this.$store.state.streetAddress }}</h3>
 			<h3>Date: {{ editPothole.reportedDate }}</h3>
 			<button type="submit">Submit</button>
 		</div>
