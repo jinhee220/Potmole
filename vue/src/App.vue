@@ -10,7 +10,7 @@
         <router-link class="link" v-bind:to="{ name: 'ReportPothole' }">Report a Pothole</router-link>
         <router-link class="link" v-bind:to="{ name: 'home' }">About</router-link>
         <router-link class="link" v-bind:to="{ name: 'home' }">Contact Us</router-link>
-        <router-link class="link" v-bind:to="{ name: 'EmployeeForm' }">Employee</router-link>
+        <router-link class="link" v-bind:to="{ name: 'EmployeeForm' }" v-if="checkCurrentUser()">Employee</router-link>
       </div>
 
       <div class="right">
@@ -29,8 +29,24 @@
 <script>
 
 export default {
-
+  methods: {
+    checkCurrentUser() {
+      if (this.$store.state.token != '') {
+        if(this.$store.state.user.authorities[0].name === 'ROLE_ADMIN'){
+          return true; 
+        }
+        else{
+          return false;
+        }
+      }
+      else{
+        return false;
+      }
+    }
+  }
 }
+
+
 
 </script>
 
