@@ -3,23 +3,24 @@
         <form v-on:submit.prevent="submitForm">
             <h3>Pothole ID: {{ updatedPothole.potHoleId }}</h3>
             <div class="field">
-            <label for="currentStatus">Status: </label>
-            <div class="dropdown">
-                <div class="dropdown-content">
-                <select id="currentStatus" name="currentStatus" v-model="updatedPothole.currentStatus" @change="toggleDropdown">
-                    <option value="reported">Reported</option>
-                    <option value="inspected">Inspected</option>
-                    <option value="repaired">Repaired</option>
-                    <option value="deleted">Deleted</option>
-                </select>
+                <label for="currentStatus">Status: </label>
+                <div class="dropdown">
+                    <div class="dropdown-content">
+                        <select id="currentStatus" name="currentStatus" v-model="updatedPothole.currentStatus"
+                            @change="toggleDropdown">
+                            <option value="reported">Reported</option>
+                            <option value="inspected">Inspected</option>
+                            <option value="repaired">Repaired</option>
+                            <option value="deleted">Deleted</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            </div>
             <h3>Reported Date: {{ updatedPothole.reportedDate }}</h3>
-                
+
             <div class="field">
                 <label for="inspectedDate">Date Inspected: </label>
-                <input type="text" id="inspectedDate" name="inspectedDate" v-model="updatedPothole.inspectedDate"/>
+                <input type="text" id="inspectedDate" name="inspectedDate" v-model="updatedPothole.inspectedDate" />
             </div>
             <div class="field">
                 <label for="repairedDate">Date Repaired: </label>
@@ -31,6 +32,9 @@
             </div>
             <button type="submit">Submit</button>
         </form>
+        <div>
+            <button type="button" class="btn btn-danger" v-on:click="hardDeletePothole">Delete</button>
+        </div>
     </div>
 </template>
 
@@ -53,8 +57,8 @@ export default {
         },
     },
     computed: {
-            updatedPothole() {
-                return {
+        updatedPothole() {
+            return {
                 potHoleId: this.pothole.potHoleId,
                 userId: this.$store.state.user.id,
                 //address: this.pothole.address,
@@ -67,11 +71,11 @@ export default {
                 severity: this.pothole.severity
             }
         }
-        
+
     },
     methods: {
         // Toggle's whether the selection menu acts as a dropdown, activated on using the dropdown
-        toggleDropdown(){
+        toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen;
         },
         toggleForm() {
@@ -85,7 +89,8 @@ export default {
 
                     if (response.status === 200) {
                         //this.$store.commit();
-                        this.$router.push({ name: "home" });
+                        alert("Pothole successfully updated!")
+                        this.$router.go();
                     }
                 })
                 .catch(error => {
@@ -93,9 +98,27 @@ export default {
                 });
 
         },
+        hardDeletePothole() {
+
+            PotholeService
+                .deletePothole(this.updatedPothole.potHoleId)
+                .then(response => {
+
+                    if (response.status === 204) {
+                        alert("Pothole successfully deleted!");
+                        this.$router.go();
+                    }
+
+                })
+                .catch(error => {
+                    this.handleErrorResponse(error, 'deleting');
+                });
+
+        },
         handleErrorResponse(error, verb) {
             // store implementation needed to proceed
-        }
+        },
+
     },
     // computed: {
 
