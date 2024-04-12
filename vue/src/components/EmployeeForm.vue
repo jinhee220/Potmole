@@ -15,6 +15,7 @@
                 </div>
             </div>
             </div>
+            <h3>Reported Date: {{ updatedPothole.reportedDate }}</h3>
                 
             <div class="field">
                 <label for="inspectedDate">Date Inspected: </label>
@@ -56,6 +57,7 @@ export default {
                 return {
                 potHoleId: this.pothole.potHoleId,
                 userId: this.$store.state.user.id,
+                //address: this.pothole.address,
                 longitude: this.pothole.longitude,
                 latitude: this.pothole.latitude,
                 currentStatus: this.pothole.currentStatus,

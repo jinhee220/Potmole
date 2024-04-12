@@ -12,6 +12,7 @@ export function createStore(currentToken, currentUser) {
       pothole: {
         potHoleId: 0,
 				userId: 0,
+        //address: "",
 				longitude: null,
 				latitude: null,
 				currentStatus: "reported",
@@ -43,7 +44,7 @@ export function createStore(currentToken, currentUser) {
       
 
       },
-      async UPDATE_POTHOLE_LIST(state){
+      UPDATE_POTHOLE_LIST(state){
         PotholeService.getPotholeList()
         .then((response) => { 
           

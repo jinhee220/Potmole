@@ -45,6 +45,7 @@ export default {
 		editPothole() {
 			return {
 				userId: this.$store.state.user.id,
+				//address: this.pothole.address,
 				longitude: this.$store.state.pothole.longitude,
 				latitude: this.pothole.latitude,
 				currentStatus: "Reported",
