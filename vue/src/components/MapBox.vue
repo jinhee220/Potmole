@@ -118,8 +118,12 @@ export default {
 
 				// Update street address property of editCoordinates by feeding clicked coordinates
 				// Currently is one click behind; NEEDS FIXING 
-				this.reverseGeocode(coords);
+				
+				// **** RICH DID IT ****
+				//this.reverseGeocode(coords);
+
 				// Update longitude and latitude properties of editCoordinates with clicked coordinates
+				
 				this.editCoordinates.longitude = coords.lng.toFixed(5);
 				this.editCoordinates.latitude = coords.lat.toFixed(5);
 
@@ -151,6 +155,8 @@ export default {
 			this.marker
 				.setLngLat(coords)
 				.addTo(this.map);
+
+			this.reverseGeocode(coords);
 		},
 		addAllMarkers(potholeList) {
 			// Loop through potholeList and add a marker to the map for each pothole
@@ -206,6 +212,7 @@ export default {
 					this.addAllMarkers(this.potholeList);
 				})
 		},
+
 		// Call the MapBox Geocoder API and retrieve a street address based on given coordinates
 		reverseGeocode(coords) {
 			// The API URL we will retrieve data from, it takes in coordinates and retrieves the place information from those coordinates
@@ -221,6 +228,11 @@ export default {
 				.then((data) => {
 					// The returned data is an object containing nested objects that we branch through to reach our 'place_name', a property that contains a full street address
 					const address = data.features[0].place_name;
+
+					//alert(address);
+
+					this.$store.state.streetAddress = address;
+
 					this.editCoordinates.streetAddress = address;
 				})
 				.catch((error) => {

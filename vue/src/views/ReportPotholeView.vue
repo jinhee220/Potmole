@@ -24,9 +24,16 @@ export default {
 	},
 	data() {
 		return {
-			pothole: this.$store.state.pothole,
-			streetAddress: ''
+			/* pothole: this.$store.state.pothole,
+			streetAddress: this.$store.state.streetAddress */
 		};
+	},
+
+	computed: {
+
+		pothole() { return this.$store.state.pothole;},
+		streetAddress() {return this.$store.state.streetAddress;}
+
 	},
 	methods: {
 		handleCoordinatesSelected(coordinates) {

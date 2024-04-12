@@ -8,7 +8,7 @@
 		<div class="form-group">
 			<h3>Longitude: {{ editPothole.longitude }}</h3>
 			<h3>Latitude: {{ editPothole.latitude }}</h3>
-			<h3>Street Address: {{ this.$store.state.streetAddress }}</h3>
+			<h3>Street Address: {{ editPothole.streetAddress }}</h3>
 			<h3>Date: {{ editPothole.reportedDate }}</h3>
 			<button type="submit">Submit</button>
 		</div>
@@ -36,7 +36,7 @@ export default {
 		},
 		streetAddress: {
 			type: String,
-		}
+		} 	 	
 	},
 
 	computed: {
@@ -45,8 +45,8 @@ export default {
 		editPothole() {
 			return {
 				userId: this.$store.state.user.id,
-				//address: this.pothole.address,
-				longitude: this.$store.state.pothole.longitude,
+				streetAddress: this.$store.state.streetAddress,
+				longitude: this.pothole.longitude,
 				latitude: this.pothole.latitude,
 				currentStatus: "Reported",
 				reportedDate: this.pothole.reportedDate,
