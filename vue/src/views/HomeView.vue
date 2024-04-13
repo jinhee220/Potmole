@@ -5,11 +5,13 @@
       <img src="src\assets\image.png" />
     </div>
     <h2>Your go-to hub for tracking and fixing pesky potholes!</h2>
-    <div class="btnbox">
-      <router-link :to="{ name: 'PotholeList' }" tag="button" class="btn"> 🚧View Potholes🚧 </router-link>
-    </div>
-    <div class="btnbox">
-      <router-link :to="{ name: 'ReportPothole' }" tag="button" class="btn"> 🚧Report Potholes🚧 </router-link>
+    <div class="btn-center">
+      <div class="btnbox">
+        <router-link :to="{ name: 'PotholeList' }" tag="button" class="btn"> 🚧View Potholes🚧 </router-link>
+      </div>
+      <div class="btnbox">
+        <router-link :to="{ name: 'ReportPothole' }" tag="button" class="btn"> 🚧Report Potholes🚧 </router-link>
+      </div>
     </div>
     <div class="spacer"></div>
     <div class="box">
@@ -114,15 +116,20 @@ div>h2 {
   padding: 10px;
   font-size: 1.5em;
   font-weight: bolder;
-  
-  
+
+
 }
 
 .btnbox {
   display: inline-block;
-  width: 50%;
+  width: 40%;
   text-align: center;
   padding-bottom: 70px;
   opacity: .8;
+}
+
+.btn-center {
+  display: flex;
+  justify-content: center;
 }
 </style>

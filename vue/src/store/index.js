@@ -15,7 +15,7 @@ export function createStore(currentToken, currentUser) {
         streetAddress: "",
 				longitude: null,
 				latitude: null,
-				currentStatus: "reported",
+				currentStatus: "Reported",
 				reportedDate: new Date().toDateString(),
 				inspectedDate: "Not Inspected Yet",
 				repairedDate: "Not Repaired Yet",

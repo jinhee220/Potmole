@@ -103,7 +103,7 @@ export default {
 		this.map.addControl(geocoder);
 
 		// Only allows the following code to run if component is being imported into PotholeList
-		if (this.parentComponent === 'PotholeList' || this.parentComponent==='EmployeeFormView') {
+		if (this.parentComponent === 'PotholeList' || this.parentComponent === 'EmployeeFormView') {
 			this.getPotholeList();
 		}
 		// Only allows the following code to run if component is being imported into ReportPotholeView
@@ -119,12 +119,12 @@ export default {
 
 				// Update street address property of editCoordinates by feeding clicked coordinates
 				// Currently is one click behind; NEEDS FIXING 
-				
+
 				// **** RICH DID IT ****
 				//this.reverseGeocode(coords);
 
 				// Update longitude and latitude properties of editCoordinates with clicked coordinates
-				
+
 				this.editCoordinates.longitude = coords.lng.toFixed(5);
 				this.editCoordinates.latitude = coords.lat.toFixed(5);
 
@@ -135,7 +135,7 @@ export default {
 			});
 		}
 
-		
+
 	},
 
 	// Method to create an element for marker, instantiate marker, and add marker to map
@@ -171,9 +171,9 @@ export default {
 
 
 				marker.getElement().addEventListener("click", () => {
-            // Emit the potholeId when the marker is clicked
-            this.$emit("setPotholeId", pothole.potHoleId);
-        });
+					// Emit the potholeId when the marker is clicked
+					this.$emit("setPotholeId", pothole.potHoleId);
+				});
 
 				// Assign coordinates to marker and add it to the map
 				marker
@@ -183,23 +183,24 @@ export default {
 
 
 				// If component is not a child of EmployeeFormView, add popup to marker
-				if (this.parentComponent!=="EmployeeFormView"){
-				// Create Popup const that will be assigned to each marker
-				const detailPopup = this.createUserPopup(pothole);
-				marker.setPopup(detailPopup)
+				if (this.parentComponent !== "EmployeeFormView") {
+					// Create Popup const that will be assigned to each marker
+					const detailPopup = this.createUserPopup(pothole);
+					marker.setPopup(detailPopup)
 				}
 			}
 		},
 		createUserPopup(pothole) {
-			return new mapboxgl.Popup({ offset: [-150, 100] }) // add popups
+			return new mapboxgl.Popup({ offset: [-160, 0] }) // add popups
 				.setHTML(
 					`<div class='popup_details'>
 						<h3 class='popup_id'>Pothole ID: ${pothole.potHoleId}</h3>
+						<img src="src/assets/potholeMarker.png" class="popup_img">
 						<p class='popup_status'>Status: ${pothole.currentStatus}</p>
 						<p class='popup_street_address'>${this.editCoordinates.streetAddress}</p>
-						<p class='popup_reported_date'>Reported Date: ${pothole.reportedDate}</p>
-						<p class='popup_inspected_date'>Inspected Date: ${pothole.inspectedDate}</p>
-						<p class='popup_repaired_date'>Repaired Date: ${pothole.repairedDate}</p>
+						<p class='popup_reported_date'>Reported Date:<br> ${pothole.reportedDate}</p>
+						<p class='popup_inspected_date'>Inspected Date:<br> ${pothole.inspectedDate}</p>
+						<p class='popup_repaired_date'>Repaired Date:<br> ${pothole.repairedDate}</p>
 						<p class='popup_severity'>Severity: ${pothole.severity}</p>
 						</div>`
 				);
@@ -216,8 +217,8 @@ export default {
 			// this.potholeList = this.$store.state.potholeList;
 			// this.addAllMarkers(this.potholeList);
 		},
-		getFilteredList(filterTerm){
-			this.potholeList = this.potholeList.filter((pothole)=> pothole.currentStatus === filterTerm);
+		getFilteredList(filterTerm) {
+			this.potholeList = this.potholeList.filter((pothole) => pothole.currentStatus === filterTerm);
 		},
 		// Call the MapBox Geocoder API and retrieve a street address based on given coordinates
 		reverseGeocode(coords) {
@@ -249,14 +250,12 @@ export default {
 		},
 
 	},
-	
+
 
 };
 </script>
 
 <style>
-
-
 .map {
 	width: 100%;
 	height: 400px;
