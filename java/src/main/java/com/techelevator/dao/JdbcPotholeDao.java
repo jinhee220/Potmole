@@ -25,7 +25,7 @@ public class JdbcPotholeDao implements PotholeDao{
     //Stubbed out to avoid errors, not yet implemented
     public List<Pothole> getListOfPotholes(){
         List<Pothole> potholes = new ArrayList<>();
-        String sql = "SELECT * FROM potholes;";
+        String sql = "SELECT * FROM potholes WHERE current_status != 'Deleted';";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
