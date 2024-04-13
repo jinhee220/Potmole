@@ -87,14 +87,14 @@ public class JdbcPotholeDao implements PotholeDao{
         Pothole createdPothole = null;
 
         String sql = "INSERT INTO potholes " +
-                "(user_id, latitude, longitude, current_status, reported_date, inspected_date, repaired_date, severity) " +     // added severity to list
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?) " +                                                                            // add another "?" for severity
+                "(user_id, latitude, longitude, street_address, current_status, reported_date, inspected_date, repaired_date, severity) " +     // added severity to list
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) " +                                                                            // add another "?" for severity
                 "RETURNING pothole_id;";
 
         try {
              int potholeId =
                      jdbcTemplate.queryForObject(sql, int.class, newPothole.getUserId(), newPothole.getLatitude(),
-                             newPothole.getLongitude(), newPothole.getCurrentStatus(),
+                             newPothole.getLongitude(), newPothole.getStreetAddress(), newPothole.getCurrentStatus(),
                              newPothole.getReportedDate(), newPothole.getInspectedDate(), newPothole.getRepairedDate(),
                              newPothole.getSeverity());                                                                          // added severity property
 
@@ -193,6 +193,7 @@ public class JdbcPotholeDao implements PotholeDao{
         p.setUserId(rs.getInt("user_id"));
         p.setLatitude(rs.getBigDecimal("latitude"));
         p.setLongitude(rs.getBigDecimal("longitude"));
+        p.setStreetAddress(rs.getString("street_address"));
         p.setCurrentStatus(rs.getString("current_status"));
         p.setReportedDate(rs.getString("reported_date"));
         p.setInspectedDate(rs.getString("inspected_date"));

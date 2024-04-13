@@ -1,5 +1,6 @@
 <template>
 	<div class="spacer"></div>
+	
 	<div class="container">
 		<MapBox parentComponent="EmployeeFormView" @setPotholeId="setPotholeToUpdate"/>
 		<EmployeeForm v-bind:pothole="pothole"/>

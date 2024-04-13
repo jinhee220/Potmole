@@ -4,9 +4,9 @@
 		<!-- pothole detail placeholder -->
 		<h3>Pothole ID: {{ pothole.potHoleId }}</h3>
 		<!-- Going to replace long and lat with address here for user -->
-		<h3>Latitude: {{ pothole.latitude }}</h3>
-		<h3>Longitude: {{ pothole.longitude }}</h3>
-		<!-- <h3>Address: {{ pothole.streetAddress }}</h3> -->
+		<!-- <h3>Latitude: {{ pothole.latitude }}</h3>
+		<h3>Longitude: {{ pothole.longitude }}</h3> -->
+		<h3>Address: {{ pothole.streetAddress }}</h3>
 		<h3>Status: {{ pothole.currentStatus }}</h3>
 		<h3>Reported Date: {{ pothole.reportedDate }}</h3>
 		<h3>Inspected Date: {{ pothole.inspectedDate }}</h3>

@@ -212,8 +212,13 @@ export default {
 
 					this.addAllMarkers(this.potholeList);
 				})
+			// this.$store.commit('UPDATE_POTHOLE_LIST');
+			// this.potholeList = this.$store.state.potholeList;
+			// this.addAllMarkers(this.potholeList);
 		},
-
+		getFilteredList(filterTerm){
+			this.potholeList = this.potholeList.filter((pothole)=> pothole.currentStatus === filterTerm);
+		},
 		// Call the MapBox Geocoder API and retrieve a street address based on given coordinates
 		reverseGeocode(coords) {
 			// The API URL we will retrieve data from, it takes in coordinates and retrieves the place information from those coordinates

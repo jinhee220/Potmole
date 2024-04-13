@@ -11,10 +11,10 @@
                     <div class="dropdown-content">
                         <select id="currentStatus" name="currentStatus" v-model="updatedPothole.currentStatus"
                             @change="toggleDropdown">
-                            <option value="reported">Reported</option>
-                            <option value="inspected">Inspected</option>
-                            <option value="repaired">Repaired</option>
-                            <option value="deleted">Deleted</option>
+                            <option value="Reported">Reported</option>
+                            <option value="Inspected">Inspected</option>
+                            <option value="Repaired">Repaired</option>
+                            <option value="Deleted">Deleted</option>
                         </select>
                     </div>
                 </div>
@@ -31,7 +31,17 @@
             </div>
             <div class="field">
                 <label for="severity">Severity: </label>
-                <input type="text" id="severity" name="severity" v-model="updatedPothole.severity" />
+                <div class="dropdown">
+                    <div class="dropdown-content">
+                        <select id="severity" name="severity" v-model="updatedPothole.severity"
+                            @change="toggleDropdown">
+                            <option value="Uninspected">Uninspected</option>
+                            <option value="Mild">Mild</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Severe">Severe</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -64,7 +74,7 @@ export default {
             return {
                 potHoleId: this.pothole.potHoleId,
                 userId: this.$store.state.user.id,
-                streetAddress: this.pothole.address,
+                streetAddress: this.pothole.streetAddress,
                 longitude: this.pothole.longitude,
                 latitude: this.pothole.latitude,
                 currentStatus: this.pothole.currentStatus,

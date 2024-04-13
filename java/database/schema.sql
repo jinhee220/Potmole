@@ -15,6 +15,7 @@ CREATE TABLE potholes (
 	user_id int NOT NULL,
 	latitude decimal(13, 5) NOT NULL,
 	longitude decimal(13, 5) NOT NULL,
+	street_address varchar(255), 
 	current_status varchar(20) NOT NULL,
 	reported_date varchar(20) NOT NULL,
 	inspected_date varchar(20),

@@ -22,7 +22,6 @@ export default {
         }
     },
     components: {
-        PotholeDetail,
         EmployeeForm
     },
     // methods: {

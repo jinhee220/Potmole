@@ -8,6 +8,8 @@ public class Pothole {
     private int userId;
     private BigDecimal latitude;
     private BigDecimal longitude;
+
+    private String streetAddress;
     private String currentStatus;
     private String reportedDate;
     private String inspectedDate;
@@ -30,6 +32,14 @@ public class Pothole {
     }
     public Pothole(){
 
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
     }
 
     public int getPotHoleId() {
