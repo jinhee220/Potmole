@@ -1,3 +1,4 @@
+<!-- Jay's Baby -->
 <template>
 	<div class="map">
 		<!-- The map container -->
@@ -231,7 +232,9 @@ export default {
 
 					//alert(address);
 
-					this.$store.state.streetAddress = address;
+					//this.$store.commit("UPDATE_STREET_ADDRESS", address);
+
+					this.$store.state.pothole.streetAddress = address;
 
 					this.editCoordinates.streetAddress = address;
 				})

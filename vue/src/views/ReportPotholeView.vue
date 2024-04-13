@@ -9,7 +9,7 @@
 	</div>
 	<div>
 		<h1>Report a Pothole</h1>
-		<PotholeForm v-bind:pothole="pothole" v-bind:streetAddress="streetAddress" />
+		<PotholeForm v-bind:pothole="pothole"/>
 	</div>
 </template>
 
@@ -32,15 +32,14 @@ export default {
 	computed: {
 
 		pothole() { return this.$store.state.pothole;},
-		streetAddress() {return this.$store.state.streetAddress;}
-
+		
 	},
 	methods: {
 		handleCoordinatesSelected(coordinates) {
 
 			this.$store.state.pothole.longitude = coordinates.longitude;
 			this.$store.state.pothole.latitude = coordinates.latitude;
-			this.$store.state.streetAddress = coordinates.streetAddress;
+			//this.$store.state.pothole.streetAddress = coordinates.streetAddress;
 		},
 	},
 };

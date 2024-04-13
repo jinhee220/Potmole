@@ -2,6 +2,9 @@
     <div class="employee">
         <form v-on:submit.prevent="submitForm">
             <h3>Pothole ID: {{ updatedPothole.potHoleId }}</h3>
+            <h3>Longitude: {{ updatedPothole.longitude }}</h3>
+            <h3>Latitude: {{ updatedPothole.latitude }}</h3>
+            <h3>Address: {{ updatedPothole.streetAddress }}</h3>
             <div class="field">
                 <label for="currentStatus">Status: </label>
                 <div class="dropdown">
@@ -61,7 +64,7 @@ export default {
             return {
                 potHoleId: this.pothole.potHoleId,
                 userId: this.$store.state.user.id,
-                //address: this.pothole.address,
+                streetAddress: this.pothole.address,
                 longitude: this.pothole.longitude,
                 latitude: this.pothole.latitude,
                 currentStatus: this.pothole.currentStatus,

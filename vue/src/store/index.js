@@ -12,7 +12,7 @@ export function createStore(currentToken, currentUser) {
       pothole: {
         potHoleId: 0,
 				userId: 0,
-        //address: "",
+        streetAddress: "",
 				longitude: null,
 				latitude: null,
 				currentStatus: "reported",
@@ -21,7 +21,6 @@ export function createStore(currentToken, currentUser) {
 				repairedDate: "Not Repaired Yet",
 				severity: ""
 			},
-      streetAddress: '',
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -40,14 +39,14 @@ export function createStore(currentToken, currentUser) {
         state.user = {};
         axios.defaults.headers.common = {};
       },
-      UPDATE_COORDINATES(coordinates){
+      // UPDATE_STREET_ADDRESS(state, newStreetAddress){
       
+      //   state.pothole.streetAddress = newStreetAddress;
 
-      },
+      // },
       UPDATE_POTHOLE_LIST(state){
         PotholeService.getPotholeList()
         .then((response) => { 
-          
             state.potholeList =  response.data;
         });
 

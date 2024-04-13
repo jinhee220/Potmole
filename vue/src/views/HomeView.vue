@@ -5,6 +5,13 @@
       <img src="src\assets\image.png" />
     </div>
     <h2>Your go-to hub for tracking and fixing pesky potholes!</h2>
+    <div class="btnbox">
+      <router-link :to="{ name: 'PotholeList' }" tag="button" class="btn"> 🚧View Potholes🚧 </router-link>
+    </div>
+    <div class="btnbox">
+      <router-link :to="{ name: 'ReportPothole' }" tag="button" class="btn"> 🚧Report Potholes🚧 </router-link>
+    </div>
+    <div class="spacer"></div>
     <div class="box">
       <h3>What We Do</h3>
       <p> Our platform simplifies pothole reporting, facilitating quick repairs and smoother rides.
@@ -46,7 +53,7 @@ export default {
 
   display: flex;
   justify-content: center;
-  padding-top: 130px;
+  padding-top: 215px;
   z-index: 2;
   background-color: none;
 
@@ -64,7 +71,7 @@ div>h2 {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
   font-size: 22.3px;
-  padding-bottom: 100px;
+  padding-bottom: 120px;
   font-weight: bolder;
 
 }
@@ -82,21 +89,40 @@ div>h2 {
   color: rgb(0, 0, 0);
   font-size: 35px;
   text-align: left;
+  padding-top: 10px;
 
 }
 
 .box {
 
   background-color: #E8E2DD;
-  opacity: .7;
+  opacity: .8;
   width: 50%;
   margin: auto;
   border-radius: 10px;
   border-left: 10px solid #E8E2DD;
   border-bottom: .5px solid #E8E2DD;
 
+}
 
+.btn {
 
+  border-radius: 10px;
+  border: 2px solid black;
+  color: black;
+  background-color: #E8E2DD;
+  padding: 10px;
+  font-size: 1.5em;
+  font-weight: bolder;
+  
+  
+}
 
+.btnbox {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  padding-bottom: 70px;
+  opacity: .8;
 }
 </style>

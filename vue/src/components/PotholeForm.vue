@@ -33,10 +33,7 @@ export default {
 		pothole: {
 			type: Object,
 			required: true,
-		},
-		streetAddress: {
-			type: String,
-		} 	 	
+		}, 	
 	},
 
 	computed: {
@@ -45,7 +42,7 @@ export default {
 		editPothole() {
 			return {
 				userId: this.$store.state.user.id,
-				streetAddress: this.$store.state.streetAddress,
+				streetAddress: this.pothole.streetAddress,
 				longitude: this.pothole.longitude,
 				latitude: this.pothole.latitude,
 				currentStatus: "Reported",
@@ -75,7 +72,8 @@ export default {
 
 					if (response.status === 201) {
 						//this.$store.commit();
-						this.$router.push({ name: "home" });
+						alert("Pothole successfully reported!");
+						this.$router.go();
 					}
 				})
 				.catch(error => {
