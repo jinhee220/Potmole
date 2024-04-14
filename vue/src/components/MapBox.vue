@@ -40,10 +40,12 @@ export default {
 		};
 	},
 	props: {
+		// extra - can be removed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		coordinates: {
 			type: Object,
 			required: true,
 		},
+		// keep this though !
 		parentComponent: {
 			type: String,
 			required: true,

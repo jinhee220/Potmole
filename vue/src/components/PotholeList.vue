@@ -61,12 +61,12 @@ export default {
             //return this.$store.state.potholeList.filter((pothole) => { return pothole.currentStatus.includes(this.selectedOption) } );
 
         },
-        created() {
+        
+    },
+    created() {
             this.$store.commit("UPDATE_POTHOLE_LIST");
             this.getFilteredList();
         },
-
-    }
 }
 </script>
 
