@@ -18,7 +18,7 @@
             <label for="password">Password </label>
             <input type="password" id="password" v-model="user.password" required />
           </div>
-          <button type="submit">Sign in</button>
+          <button type="submit"><strong>Sign in</strong></button>
           <p>
             <router-link class="link" v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link>
           </p>
@@ -130,5 +130,8 @@ button[type="submit"]:hover {
   padding-top: 20px;
 }
 
+* {
+  color: black;
+}
 
 </style>

@@ -2,14 +2,14 @@
 <template>
 	<div class="spacer"></div>
 	<div>
-		<h2>Click a Pothole Location</h2>
+		<h1>Click a Pothole Location</h1>
 		<!-- Call MapBox component and set parentComponent prop. 
 			@coordinates-selected listens for $emit from child component MapBox and runs handleCoordinatesSelected method -->
 		<MapBox parent-component="ReportPotholeView" @coordinates-selected="handleCoordinatesSelected" />
 	</div>
 	<div>
-		<h1>Report a Pothole</h1>
-		<PotholeForm v-bind:pothole="pothole"/>
+		<h2>Report a Pothole</h2>
+		<PotholeForm v-bind:pothole="pothole" />
 	</div>
 </template>
 
@@ -31,8 +31,8 @@ export default {
 
 	computed: {
 
-		pothole() { return this.$store.state.pothole;},
-		
+		pothole() { return this.$store.state.pothole; },
+
 	},
 	methods: {
 		handleCoordinatesSelected(coordinates) {
@@ -48,5 +48,16 @@ export default {
 <style scoped>
 .spacer {
 	height: 1rem;
+}
+
+h1 {
+
+	text-align: center;
+	color: black;
+}
+
+h2 {
+	text-align: center;
+	color: black;
 }
 </style>

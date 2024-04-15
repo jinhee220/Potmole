@@ -4,18 +4,24 @@
 			<MapBox/>
 		</div> -->
 
-	<form v-on:submit.prevent="submitForm">
-		<div class="form-group">
-			<h3>Longitude: {{ editPothole.longitude }}</h3>
-			<h3>Latitude: {{ editPothole.latitude }}</h3>
-			<h3>Street Address: {{ editPothole.streetAddress }}</h3>
-			<h3>Date: {{ editPothole.reportedDate }}</h3>
-			<button type="submit">Submit</button>
-		</div>
-		<!-- Adding a input - description for a pothole(?) -->
-		<!-- Adding a input - description for a img file(?) -->
+	<body class="main">
+		<div class="pothole">
+			<form v-on:submit.prevent="submitForm">
+				<div class="form-group">
+					<p><strong>Longitude: </strong>{{ editPothole.longitude }}</p>
+					<p><strong>Latitude: </strong>{{ editPothole.latitude }}</p>
+					<p><strong>Address: </strong>{{ editPothole.streetAddress }}</p>
+					<p><strong>Date: </strong>{{ editPothole.reportedDate }}</p>
+					<div class="button-container">
+						<button type="submit"><strong>Submit</strong></button>
+					</div>
+				</div>
+				<!-- Adding a input - description for a pothole(?) -->
+				<!-- Adding a input - description for a img file(?) -->
 
-	</form>
+			</form>
+		</div>
+	</body>
 </template>
 
 <script>
@@ -33,7 +39,7 @@ export default {
 		pothole: {
 			type: Object,
 			required: true,
-		}, 	
+		},
 	},
 
 	computed: {
@@ -122,4 +128,53 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+button[type="submit"] {
+	background-color: #ffbd8b;
+	color: black;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	box-shadow: gray 5px 5px 5px;
+}
+
+button[type="submit"]:hover {
+	background-color: #d68548;
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.pothole {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: 80%;
+	border: 1px solid black;
+	border-radius: 10px;
+	box-shadow: gray 5px 5px 5px;
+}
+
+.form-group {
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+.button-container{
+
+	margin-bottom: 20px;
+
+}
+
+* {
+	color: black;
+}
+</style>

@@ -19,7 +19,7 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Create Account</button>
+      <button type="submit"><strong>Create Account</strong></button>
       <p><router-link class="link" v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
@@ -150,6 +150,9 @@ button[type="submit"]:hover {
 #last-input {
   text-align: left;
   margin-left: 12.5%;
+}
+* {
+  color: black;
 }
 
 
