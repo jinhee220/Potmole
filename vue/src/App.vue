@@ -3,14 +3,14 @@
 <template>
   <div id="capstone-app">
     <!-- Links / Nav Bar / Header -->
-    <div id="nav">
+
+    <div class="nav">
       <div class="left">
         <router-link class="link" v-bind:to="{ name: 'home' }">Home</router-link>
         <router-link class="link" v-bind:to="{ name: 'PotholeList' }">Potholes</router-link>
         <router-link class="link" v-bind:to="{ name: 'ReportPothole' }">Report a Pothole</router-link>
-        <!--  CHECK IN WITH RICH & ISAAC ON WHETHER OR NOT TO LEAVE THESE IN FOR FUTURE DEVELOPMENT !!!!!!!!!!  --> 
-        <!-- <router-link class="link" v-bind:to="{ name: 'home' }">About</router-link> -->
-        <!-- <router-link class="link" v-bind:to="{ name: 'home' }">Contact Us</router-link> -->
+        <router-link class="link" v-bind:to="{ name: 'home' }">About</router-link>
+        <router-link class="link" v-bind:to="{ name: 'home' }">Contact Us</router-link>
         <router-link class="link" v-bind:to="{ name: 'EmployeeForm' }" v-if="checkCurrentUser()">Employee</router-link>
       </div>
 
@@ -19,6 +19,7 @@
         <router-link class="link" v-bind:to="{ name: 'register' }">Register</router-link>
         <router-link class="link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </div>
+
     </div>
 
     <router-view id="views" />
@@ -55,17 +56,22 @@ export default {
 <!------------------------- STYLE ---------------------------------->
 <style scoped>
 #capstone-app {
-  height: fit-content;
   background-color: transparent;
+  height: fit-content;
 }
 
 #views {
-  margin: -5% 0% 0% 0%;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  margin: 0% 0% 0% 0%;
+
+
 }
 
-#nav {
+.nav {
   display: flex;
   background-color: #E8E2DD;
   opacity: .7;
@@ -74,9 +80,11 @@ export default {
   width: 98%;
   margin: auto;
   align-content: center;
+  padding: 3px;
+  margin-top: 10px;
 }
 
-#nav>div {
+.nav>div {
   display: inline-block;
   align-self: center;
   /* changed padding below to do a flex align so that borders can be respected */
@@ -90,11 +98,12 @@ export default {
   padding-left: 10px;
   padding-right: 10px;
   /* border: 2px rgb(0, 0, 0) solid; */
+
 }
 
 .left {
   display: flex;
-  /* justify-content: flex-start; */
+  justify-content: flex-start;
   flex-grow: 1;
   border-radius: inherit;
   flex-wrap: nowrap;
@@ -102,11 +111,10 @@ export default {
 
 .right {
   display: flex;
-  /* justify-content: flex-end; */
+  justify-content: flex-end;
   flex-grow: 0;
   /* float: right; */
   border-radius: inherit;
   flex-wrap: nowrap;
 }
-
 </style>

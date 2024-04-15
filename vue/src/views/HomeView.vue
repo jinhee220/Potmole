@@ -13,7 +13,6 @@
         <router-link :to="{ name: 'ReportPothole' }" tag="button" class="btn"> 🚧Report Potholes🚧 </router-link>
       </div>
     </div>
-    <div class="spacer"></div>
     <div class="box">
       <h3>What We Do</h3>
       <p> Our platform simplifies pothole reporting, facilitating quick repairs and smoother rides.
@@ -21,11 +20,7 @@
         efficiently.
         Say goodbye to bumpy roads and hello to smoother travels with PotMole!</p>
     </div>
-    
-    <footer>
-      Copyright © PotMole Enterprises
-    </footer>
-
+    <div class="spacer-bot"></div>
   </div>
 </template>
 
@@ -43,32 +38,18 @@ export default {
 
 }
 
-footer {
-  display: flex;
-  background-color: #E8E2DD;
-  opacity: .7;
-  border-radius: 10px;
-  height: 20px;
-  width: 250px;
-  align-content: left;
-  margin-top: 5%;
-  margin-left: 1%;
-  padding-left: 10px;
-}
-
-
 .spacer {
   height: 1.5rem;
 }
 
+.spacer-bot {
+  height: 5rem;
+}
 
 .home {
-
   background-image: url("src/assets/background.webp");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
-
 }
 
 .logo {
@@ -124,7 +105,6 @@ div>h2 {
   border-radius: 10px;
   border-left: 10px solid #E8E2DD;
   border-bottom: .5px solid #E8E2DD;
-
 }
 
 .btn {
@@ -144,7 +124,7 @@ div>h2 {
   display: inline-block;
   width: 40%;
   text-align: center;
-  padding-bottom: 70px;
+  padding: 20px 20px 70px 20px;
   opacity: .8;
 }
 
