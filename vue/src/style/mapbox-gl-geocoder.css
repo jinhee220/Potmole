@@ -28,7 +28,7 @@
   height: 50px;
   color: #404040; /* fallback */
   color: rgba(0, 0, 0, 0.75);
-  padding: 6px 45px;
+  /* padding: 6px 45px; */
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

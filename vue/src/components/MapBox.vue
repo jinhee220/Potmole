@@ -84,7 +84,8 @@ export default {
 		const geocoder = new MapboxGeocoder({
 			accessToken: mapboxgl.accessToken,
 			mapboxgl: mapboxgl,
-		});
+		}
+		);
 
 		// Add Geolocation for user location to mapboxgl
 		this.map.addControl(
@@ -100,10 +101,10 @@ export default {
 
 
 		// This adds Geocoder plugin to map
-		this.map.addControl(geocoder);
+		this.map.addControl(geocoder, 'top-left');
 
 		// Only allows the following code to run if component is being imported into PotholeList
-		if (this.parentComponent === 'PotholeList' || this.parentComponent==='EmployeeFormView') {
+		if (this.parentComponent === 'PotholeList' || this.parentComponent === 'EmployeeFormView') {
 			this.getPotholeList();
 		}
 		// Only allows the following code to run if component is being imported into ReportPotholeView
@@ -183,7 +184,7 @@ export default {
 
 
 				// If component is not a child of EmployeeFormView, add popup to marker
-				if (this.parentComponent!=="EmployeeFormView"){
+				if (this.parentComponent !== "EmployeeFormView"){
 				// Create Popup const that will be assigned to each marker
 				const detailPopup = this.createUserPopup(pothole);
 				marker.setPopup(detailPopup)
@@ -195,11 +196,12 @@ export default {
 				.setHTML(
 					`<div class='popup_details'>
 						<h3 class='popup_id'>Pothole ID: ${pothole.potHoleId}</h3>
+						<img src="src/assets/pothole.jpg" class="popup_img">
 						<p class='popup_status'>Status: ${pothole.currentStatus}</p>
 						<p class='popup_street_address'>${this.editCoordinates.streetAddress}</p>
-						<p class='popup_reported_date'>Reported Date: ${pothole.reportedDate}</p>
-						<p class='popup_inspected_date'>Inspected Date: ${pothole.inspectedDate}</p>
-						<p class='popup_repaired_date'>Repaired Date: ${pothole.repairedDate}</p>
+						<p class='popup_reported_date'>Reported Date:<br>${pothole.reportedDate}</p>
+						<p class='popup_inspected_date'>Inspected Date:<br>${pothole.inspectedDate}</p>
+						<p class='popup_repaired_date'>Repaired Date:<br>${pothole.repairedDate}</p>
 						<p class='popup_severity'>Severity: ${pothole.severity}</p>
 						</div>`
 				);
@@ -217,7 +219,7 @@ export default {
 			// this.addAllMarkers(this.potholeList);
 		},
 		getFilteredList(filterTerm){
-			this.potholeList = this.potholeList.filter((pothole)=> pothole.currentStatus === filterTerm);
+			this.potholeList = this.potholeList.filter((pothole) => pothole.currentStatus === filterTerm);
 		},
 		// Call the MapBox Geocoder API and retrieve a street address based on given coordinates
 		reverseGeocode(coords) {
@@ -283,4 +285,5 @@ export default {
 	position: absolute;
 
 }
+
 </style>

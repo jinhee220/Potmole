@@ -181,6 +181,7 @@ export default {
     border-radius: 5px;
     cursor: pointer;
     color: black;
+    font-weight: bold;
 }
 
 button:hover {

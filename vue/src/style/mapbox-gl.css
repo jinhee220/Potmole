@@ -664,8 +664,10 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
     grid-area: img;
     width: 50%;
     margin: auto;
-    text-transform: capitalize;
-    font-weight: bolder;
+    /* text-transform: capitalize;
+    font-weight: bolder; */
+    background-image: url("src/assets/pothole.jpg");
+    background-size: cover;
 }
 
 .popup_severity {
