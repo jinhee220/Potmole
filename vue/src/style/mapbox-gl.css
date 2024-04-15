@@ -675,16 +675,19 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
 
 .popup_reported_date {
     grid-area: report;
+    text-align: center;
 
 }
 
 .popup_inspected_date {
     grid-area: inspect;
+    text-align: center;
 
 }
 
 .popup_repaired_date {
     grid-area: repair;
+    text-align: center;
 
 }
 
