@@ -82,9 +82,11 @@ label {
   margin: auto;
   text-align: center;
   background-color: #BBBAB9;
-  border: 2px solid white;
+  border: 2px solid #BBBAB9;
   border-radius: 10px;
   width: 55%;
+  box-shadow: gray 5px 5px 5px;
+  
 }
 
 input[type="text"],
@@ -102,6 +104,7 @@ button[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: gray 5px 5px 5px ;
 }
 
 button[type="submit"]:hover {

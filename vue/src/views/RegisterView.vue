@@ -15,7 +15,7 @@
         <label for="password">Password </label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <div class="form-input-group">
+      <div class="form-input-group" id="last-input">
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
@@ -93,9 +93,10 @@ label {
   margin: auto;
   text-align: center;
   background-color: #BBBAB9;
-  border: 2px solid white;
+  border: 2px solid #BBBAB9;
   border-radius: 10px;
   width: 55%;
+  box-shadow: gray 5px 5px 5px ;
 }
 
 input[type="text"],
@@ -106,6 +107,13 @@ input[type="password"] {
   border-radius: 5px;
 } 
 
+#confirmPassword {
+  width: 57%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 button[type="submit"] {
   background-color: #ffbd8b; 
   color: black;
@@ -113,6 +121,7 @@ button[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: gray 5px 5px 5px ;
 }
 
 button[type="submit"]:hover {
@@ -136,6 +145,11 @@ button[type="submit"]:hover {
 
 #first-input {
   padding-top: 20px;
+}
+
+#last-input {
+  text-align: left;
+  margin-left: 12.5%;
 }
 
 
