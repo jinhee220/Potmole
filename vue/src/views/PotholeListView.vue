@@ -3,7 +3,10 @@
 		<div class="spacer"></div>
 		<!-- 5 buttons here for All Reported Inspected, Repaired, Deleted (v-if employee only)-->
 		<div class="list">
-			<h2>Potholes List</h2>
+			<div class="header">
+				<h2>Potholes List</h2>
+				<img src="../assets/potholeMarker.png">
+			</div>
 			<PotholeList />
 		</div>
 	</div>
@@ -26,13 +29,26 @@ export default {
 	width: 100%;
 }
 
+.header {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	background-color: white;
+	margin-top: 1rem;
+	border: none;
+}
+
 h2 {
 	font-size: 2rem;
 	text-align: center;
-	background-color: white;
-	margin-top: 1rem;
-	margin-bottom: 0;
-	padding: 1rem 0 1rem 0;
+	margin-bottom: 1rem;
+}
+
+img {
+	width: 35px;
+	height: 50px;
+	padding: 10px;
+	margin-top: 10px;
 }
 
 .spacer {

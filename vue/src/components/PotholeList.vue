@@ -7,7 +7,7 @@
             </div>
 
             <div class="filter">
-                <h3>For Pothole Details, Select A Status: </h3>
+                <h3>Search By Status: </h3>
                 <div class="dropdown">
                     <div class="dropdown-content">
                         <select id="currentStatus" name="currentStatus" v-model="selectedOption">
@@ -76,10 +76,13 @@ export default {
 .container {
     display: block;
     background: #bbbab9;
+
 }
 
 .title-map-filter {
     background-color: white;
+    padding-bottom: 20px;
+    display: grid;
 }
 
 .pothole-container {
@@ -87,6 +90,8 @@ export default {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    max-width: 85%;
+    margin: auto;
 }
 
 /* .map {
@@ -97,9 +102,8 @@ export default {
 */
 
 .mapbox {
-    width: 95%;
+    width: 90%;
     margin: auto;
-    box-shadow: gray 1px 1px 1px 1px;
 }
 
 .filter {
@@ -107,13 +111,32 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding: 0px 5px;
+    margin: auto;
 }
 
 h3 {
+    font-size: larger;
     padding-right: 10px;
 }
 
 #currentStatus {
     margin-right: 10px;
+}
+
+select {
+    width: 6rem;
+}
+
+
+
+button {
+    background-color: #D68548;
+    background-color: #FFBD8B;
+    box-shadow: gray 2px 2px 2px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 </style>
