@@ -1,17 +1,18 @@
 <template>
   <div class="spacer"></div>
   <div id="register" class="text-center">
-    <form v-on:submit.prevent="register">
+    <form class="form" v-on:submit.prevent="register">
       <h1>Create Account</h1>
+      <hr class="divide">
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <div class="form-input-group">
+      <div class="form-input-group" id="first-input">
         <label for="username">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label for="password">Password </label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <div class="form-input-group">
@@ -19,7 +20,7 @@
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
       <button type="submit">Create Account</button>
-      <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <p><router-link class="link" v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
 </template>
@@ -76,6 +77,8 @@ export default {
 <style scoped>
 .spacer {
   height: 1rem;
+  background-color: white;
+  padding-bottom: 50px;
 }
 
 .form-input-group {
@@ -85,4 +88,55 @@ export default {
 label {
   margin-right: 0.5rem;
 }
+
+#register {
+  margin: auto;
+  text-align: center;
+  background-color: #BBBAB9;
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 55%;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+} 
+
+button[type="submit"] {
+  background-color: #ffbd8b; 
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #d68548; 
+}
+
+.form > h1 {
+  font-size: 1.5rem;
+}
+
+.form > h1, label,.link {
+  color: black;
+}
+
+.divide {
+  border: 1px solid black;
+  border-radius: 100px;
+  background-color: black;
+  width: 90%;
+}
+
+#first-input {
+  padding-top: 20px;
+}
+
+
 </style>
