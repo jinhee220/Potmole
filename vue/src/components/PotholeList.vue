@@ -1,13 +1,14 @@
 <template>
-    
-    <div>
-        <!-- Call MapBox component and set parentComponent prop -->
-        <MapBox parent-component="PotholeList" />
-    </div>
-    
-    <div class="filter">
-        <h3>For Pothole Details, Select A Status: </h3>
-            <div class="dropdown">
+    <div class="container">
+        <div class="title-map-filter">
+            <div class="map">
+                <!-- Call MapBox component and set parentComponent prop -->
+                <MapBox class="mapbox" parent-component="PotholeList" />
+            </div>
+
+            <div class="filter">
+                <h3>For Pothole Details, Select A Status: </h3>
+                <div class="dropdown">
                     <div class="dropdown-content">
                         <select id="currentStatus" name="currentStatus" v-model="selectedOption">
                             <option value="">All</option>
@@ -20,13 +21,14 @@
                         <button v-on:click="getFilteredList()">Apply Filter</button>
 
                     </div>
+                </div>
             </div>
-    </div>
-    
-    <div class="pothole-container">
-        <PotholeDetail v-bind:key="pothole.id" v-for="pothole in filteredList" v-bind:pothole="pothole" />
-    </div>
+        </div>
 
+        <div class="pothole-container">
+            <PotholeDetail v-bind:key="pothole.id" v-for="pothole in filteredList" v-bind:pothole="pothole" />
+        </div>
+    </div>
 </template>
 
 <script>
@@ -57,24 +59,47 @@ export default {
     methods: {
 
         getFilteredList() {
-            this.filteredList = this.$store.state.potholeList.filter((pothole) => { return pothole.currentStatus.includes(this.selectedOption) } );
+            this.filteredList = this.$store.state.potholeList.filter((pothole) => { return pothole.currentStatus.includes(this.selectedOption) });
             //return this.$store.state.potholeList.filter((pothole) => { return pothole.currentStatus.includes(this.selectedOption) } );
 
         },
-        
+
     },
     created() {
-            this.$store.commit("UPDATE_POTHOLE_LIST");
-            this.getFilteredList();
-        },
+        this.$store.commit("UPDATE_POTHOLE_LIST");
+        this.getFilteredList();
+    },
 }
 </script>
 
-<style>
+<style scoped>
+.container {
+    display: block;
+    background: #bbbab9;
+}
+
+.title-map-filter {
+    background-color: white;
+}
+
 .pothole-container {
+    background: transparent;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+/* .map {
+    width: 95%;
+    margin: auto;
+    /* border: black 3px solid; 
+}
+*/
+
+.mapbox {
+    width: 95%;
+    margin: auto;
+    box-shadow: gray 1px 1px 1px 1px;
 }
 
 .filter {

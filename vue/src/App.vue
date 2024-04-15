@@ -32,14 +32,14 @@ export default {
   methods: {
     checkCurrentUser() {
       if (this.$store.state.token != '') {
-        if(this.$store.state.user.authorities[0].name === 'ROLE_ADMIN'){
-          return true; 
+        if (this.$store.state.user.authorities[0].name === 'ROLE_ADMIN') {
+          return true;
         }
-        else{
+        else {
           return false;
         }
       }
-      else{
+      else {
         return false;
       }
     }
@@ -55,6 +55,7 @@ export default {
 <style scoped>
 #capstone-app {
   height: 80rem;
+  background-color: transparent;
 }
 
 #views {
