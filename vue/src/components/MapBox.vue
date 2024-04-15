@@ -263,11 +263,12 @@ export default {
 
 }
 
-
-
 .map-container {
 	width: 100%;
 	height: 100%;
+	border-radius: 20px;
+	box-shadow: grey 5px 5px 5px;
+
 }
 
 /* Set css style for marker */

@@ -21,6 +21,11 @@
         efficiently.
         Say goodbye to bumpy roads and hello to smoother travels with PotMole!</p>
     </div>
+    
+    <footer>
+      Copyright © PotMole Enterprises
+    </footer>
+
   </div>
 </template>
 
@@ -38,9 +43,24 @@ export default {
 
 }
 
+footer {
+  display: flex;
+  background-color: #E8E2DD;
+  opacity: .7;
+  border-radius: 10px;
+  height: 20px;
+  width: 250px;
+  align-content: left;
+  margin-top: 5%;
+  margin-left: 1%;
+  padding-left: 10px;
+}
+
+
 .spacer {
   height: 1.5rem;
 }
+
 
 .home {
 

@@ -8,8 +8,9 @@
         <router-link class="link" v-bind:to="{ name: 'home' }">Home</router-link>
         <router-link class="link" v-bind:to="{ name: 'PotholeList' }">Potholes</router-link>
         <router-link class="link" v-bind:to="{ name: 'ReportPothole' }">Report a Pothole</router-link>
-        <router-link class="link" v-bind:to="{ name: 'home' }">About</router-link>
-        <router-link class="link" v-bind:to="{ name: 'home' }">Contact Us</router-link>
+        <!--  CHECK IN WITH RICH & ISAAC ON WHETHER OR NOT TO LEAVE THESE IN FOR FUTURE DEVELOPMENT !!!!!!!!!!  --> 
+        <!-- <router-link class="link" v-bind:to="{ name: 'home' }">About</router-link> -->
+        <!-- <router-link class="link" v-bind:to="{ name: 'home' }">Contact Us</router-link> -->
         <router-link class="link" v-bind:to="{ name: 'EmployeeForm' }" v-if="checkCurrentUser()">Employee</router-link>
       </div>
 
@@ -54,7 +55,7 @@ export default {
 <!------------------------- STYLE ---------------------------------->
 <style scoped>
 #capstone-app {
-  height: 80rem;
+  height: fit-content;
   background-color: transparent;
 }
 
@@ -107,4 +108,5 @@ export default {
   border-radius: inherit;
   flex-wrap: nowrap;
 }
+
 </style>

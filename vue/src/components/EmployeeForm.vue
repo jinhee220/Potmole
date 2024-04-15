@@ -3,16 +3,16 @@
     <div class="employee">
         <form v-on:submit.prevent="submitForm">
             <div class="immutable_data">
-            <h3 id="pothole_id">Pothole ID: {{ updatedPothole.potHoleId }}</h3>
-            <h3 id="longitude">Longitude: {{ updatedPothole.longitude }}</h3>
-            <h3 id="latitude">Latitude: {{ updatedPothole.latitude }}</h3>
-            <h3 id="addressStreet">Street: {{ deliminatedAddress.street }}</h3>
-            <h3 id="addressCityState">City, State: {{ deliminatedAddress.city }} {{ deliminatedAddress.state }}</h3>
-            <h3 id="addressCountry">Country: {{ deliminatedAddress.country }}</h3>
+            <p id="pothole_id"><strong>Pothole ID: </strong>{{ updatedPothole.potHoleId }}</p>
+            <p id="longitude"><strong>Longitude: </strong>{{ updatedPothole.longitude }}</p>
+            <p id="latitude"><strong>Latitude: </strong>{{ updatedPothole.latitude }}</p>
+            <p id="addressStreet"><strong>Street: </strong>{{ deliminatedAddress.street }}</p>
+            <p id="addressCityState"><strong>City, State: </strong>{{ deliminatedAddress.city }} {{ deliminatedAddress.state }}</p>
+            <p id="addressCountry"><strong>Country: </strong>{{ deliminatedAddress.country }}</p>
             </div>
             <div class="mutable_data">
             <div class="statusField">
-                <label for="currentStatus">Status: </label>
+                <label for="currentStatus"><strong>Status: </strong></label>
                 <div class="dropdown">
                     <div class="dropdown-content">
                         <select id="currentStatus" name="currentStatus" v-model="updatedPothole.currentStatus"
@@ -25,18 +25,18 @@
                     </div>
                 </div>
             </div>
-            <h3>Reported Date: {{ updatedPothole.reportedDate }}</h3>
+            <p><strong>Reported Date: </strong>{{ updatedPothole.reportedDate }}</p>
 
             <div class="field">
-                <label for="inspectedDate">Date Inspected: </label>
+                <label for="inspectedDate"><strong>Date Inspected: </strong></label>
                 <input type="text" id="inspectedDate" name="inspectedDate" v-model="updatedPothole.inspectedDate" />
             </div>
             <div class="field">
-                <label for="repairedDate">Date Repaired: </label>
+                <label for="repairedDate"><strong>Date Repaired: </strong></label>
                 <input type="text" id="repairedDate" name="repairedDate" v-model="updatedPothole.repairedDate" />
             </div>
             <div class="severityField">
-                <label for="severity">Severity: </label>
+                <label for="severity"><strong>Severity: </strong></label>
                 <div class="dropdown">
                     <div class="dropdown-content">
                         <select id="severity" name="severity" v-model="updatedPothole.severity"
@@ -49,12 +49,15 @@
                     </div>
                 </div>
             </div>
-            <button type="submit">Submit</button>
+            <div class="button-container">
+            <button type="submit" class="button-form" >Submit</button>
+            <button type="button" class="button-form" v-on:click="hardDeletePothole">Delete</button>
+            </div>
         </div>
         </form>
-        <div>
-            <button type="button" class="btn btn-danger" v-on:click="hardDeletePothole">Delete</button>
-        </div>
+        <!-- <div>
+            <button type="button" class="button-form" v-on:click="hardDeletePothole">Delete</button>
+        </div> -->
     </div>
 </body>
 </template>
@@ -161,6 +164,28 @@ export default {
 </script>
 
 <style scoped>
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+
+.button-form {
+    background-color: #FFBD9B;
+    box-shadow: gray 2px 2px 2px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+}
+
+button:hover {
+    background-color: #D68548;
+}
 
 #repairedDate {
     margin-left: 7px;

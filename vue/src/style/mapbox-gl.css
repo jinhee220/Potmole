@@ -109,7 +109,7 @@
 }
 
 .mapboxgl-ctrl-group {
-    border-radius: 4px;
+    border-radius: 50%;
     background: #fff;
 }
 
@@ -134,6 +134,7 @@
     background-color: transparent;
     cursor: pointer;
     overflow: hidden;
+    /* background-image: url("src/assets/currentLocationImage.webp") !important; */
 }
 
 .mapboxgl-ctrl-group button+button {
@@ -364,7 +365,9 @@
 }
 
 .mapboxgl-ctrl button.mapboxgl-ctrl-geolocate .mapboxgl-ctrl-icon {
-    background-image: svg-inline(ctrl-geolocate);
+    /* background-image: svg-inline(ctrl-geolocate); */
+    background-image: url("src/assets/currentLocationImage.webp");
+    background-size: cover;
 }
 
 .mapboxgl-ctrl button.mapboxgl-ctrl-geolocate:disabled .mapboxgl-ctrl-icon {
