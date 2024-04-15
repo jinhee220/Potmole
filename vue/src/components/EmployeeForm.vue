@@ -1,11 +1,17 @@
 <template>
+    <body class="main">
     <div class="employee">
         <form v-on:submit.prevent="submitForm">
-            <h3>Pothole ID: {{ updatedPothole.potHoleId }}</h3>
-            <h3>Longitude: {{ updatedPothole.longitude }}</h3>
-            <h3>Latitude: {{ updatedPothole.latitude }}</h3>
-            <h3>Address: {{ updatedPothole.streetAddress }}</h3>
-            <div class="field">
+            <div class="immutable_data">
+            <h3 id="pothole_id">Pothole ID: {{ updatedPothole.potHoleId }}</h3>
+            <h3 id="longitude">Longitude: {{ updatedPothole.longitude }}</h3>
+            <h3 id="latitude">Latitude: {{ updatedPothole.latitude }}</h3>
+            <h3 id="addressStreet">Street: {{ deliminatedAddress.street }}</h3>
+            <h3 id="addressCityState">City, State: {{ deliminatedAddress.city }} {{ deliminatedAddress.state }}</h3>
+            <h3 id="addressCountry">Country: {{ deliminatedAddress.country }}</h3>
+            </div>
+            <div class="mutable_data">
+            <div class="statusField">
                 <label for="currentStatus">Status: </label>
                 <div class="dropdown">
                     <div class="dropdown-content">
@@ -29,7 +35,7 @@
                 <label for="repairedDate">Date Repaired: </label>
                 <input type="text" id="repairedDate" name="repairedDate" v-model="updatedPothole.repairedDate" />
             </div>
-            <div class="field">
+            <div class="severityField">
                 <label for="severity">Severity: </label>
                 <div class="dropdown">
                     <div class="dropdown-content">
@@ -44,11 +50,13 @@
                 </div>
             </div>
             <button type="submit">Submit</button>
+        </div>
         </form>
         <div>
             <button type="button" class="btn btn-danger" v-on:click="hardDeletePothole">Delete</button>
         </div>
     </div>
+</body>
 </template>
 
 <script>
@@ -60,6 +68,12 @@ export default {
         return {
             showForm: false,
             isDropdownOpen: false,
+            deliminatedAddress: {
+                street: '',
+                city: '',
+                state: '',
+                country: ''
+            }
         }
     },
     props: {
@@ -68,6 +82,9 @@ export default {
             type: Object,
             required: true,
         },
+    },
+    updated() {
+        this.splitAddress();
     },
     computed: {
         updatedPothole() {
@@ -83,10 +100,20 @@ export default {
                 repairedDate: this.pothole.repairedDate,
                 severity: this.pothole.severity
             }
-        }
+        },
+       
 
     },
     methods: {
+        splitAddress(){
+            const addressArray = this.pothole.streetAddress.split(', ')
+            if (addressArray.length>0){
+            this.deliminatedAddress.street = addressArray[0];
+            this.deliminatedAddress.city=addressArray[1];
+            this.deliminatedAddress.state=addressArray[2];
+            this.deliminatedAddress.country=addressArray[3];
+            }
+        },
         // Toggle's whether the selection menu acts as a dropdown, activated on using the dropdown
         toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen;
@@ -109,10 +136,8 @@ export default {
                 .catch(error => {
                     this.handleErrorResponse(error, 'updating');
                 });
-
         },
         hardDeletePothole() {
-
             PotholeService
                 .deletePothole(this.updatedPothole.potHoleId)
                 .then(response => {
@@ -121,7 +146,6 @@ export default {
                         alert("Pothole successfully deleted!");
                         this.$router.go();
                     }
-
                 })
                 .catch(error => {
                     this.handleErrorResponse(error, 'deleting');
@@ -133,22 +157,89 @@ export default {
         },
 
     },
-    // computed: {
-
-    //     // Since props are a read-only, creating an object that can be acted on
-    //     updatePothole() {
-    //         return {
-    //             userId: this.pothole.userId,
-    //             longitude: this.pothole.longitude,
-    //             latitude: this.pothole.latitude,
-    //             currentStatus: "Reported",
-    //             reportedDate: this.pothole.reportedDate,
-    //             inspectedDate: this.pothole.inspectedDate,
-    //             repairedDate: this.pothole.repairedDate,
-    //         }
-    //     },
-    // },
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+
+#repairedDate {
+    margin-left: 7px;
+}
+.severityField{
+    display: flex;
+    flex-direction: row;
+}
+
+#severity{
+    margin-left: 5px;
+}
+
+.statusField{
+    display: flex;
+    flex-direction: row;
+}
+
+.btn{
+    margin: 10px 0px;
+}
+
+h3 {
+    margin: 10px;
+    padding: 0px;
+}
+
+#currentStatus{
+    margin-left: 5px;
+}
+
+.immutable_data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    "pothole_id addressStreet"
+    "longitude addressCityState"
+    "latitude addressCountry";
+    text-align: center;
+    }
+#pothole_id {
+    grid-area: pothole_id;
+}
+#longitude {
+    grid-area: longitude;
+}
+#latitude {
+    grid-area: latitude;
+}
+#addressStreet {
+    grid-area: addressStreet;
+}
+#addressCityState {
+    grid-area: addressCityState;
+}
+#addressCountry {
+    grid-area: addressCountry;
+}
+.employee {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: gray 5px 5px 5px ;
+}
+
+.mutable_data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+</style>

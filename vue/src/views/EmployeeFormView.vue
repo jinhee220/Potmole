@@ -28,7 +28,7 @@ methods : {
 	setPotholeToUpdate(id){
     
 	this.pothole = this.$store.state.potholeList.find(p => p.potHoleId === id);
-	//this.pothole = this.$store.state.potholeList[index];
+
 	}
 }
 }
@@ -42,6 +42,6 @@ methods : {
 
 .container{
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 }
 </style>
