@@ -195,7 +195,6 @@ export default {
 						<h3 class='popup_id'>Pothole ID: ${pothole.potHoleId}</h3>
 						<img src="src/assets/pothole.jpg" class="popup_img">
 						<p class='popup_status'>Status: ${pothole.currentStatus}</p>
-						<p class='popup_street_address'>${pothole.streetAddress}</p>
 						<p class='popup_reported_date'>Reported Date:<br>${pothole.reportedDate}</p>
 						<p class='popup_inspected_date'>Inspected Date:<br>${pothole.inspectedDate}</p>
 						<p class='popup_repaired_date'>Repaired Date:<br>${pothole.repairedDate}</p>
