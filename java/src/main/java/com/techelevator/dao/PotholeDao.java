@@ -11,6 +11,8 @@ public interface PotholeDao {
 
     List<Pothole> getListOfPotholes();
 
+    List<Pothole> getListOfDeletedPotholes();
+
     Pothole updatePothole (Pothole updatedPothole);
 
     Pothole getPotholeIdByLatLon (BigDecimal lat, BigDecimal lon);

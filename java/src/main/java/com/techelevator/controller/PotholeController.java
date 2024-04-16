@@ -44,6 +44,21 @@ public class PotholeController {
         }
         return allPotholes;
     }
+
+    @RequestMapping(path = "/getAllDeletedPotholes", method = RequestMethod.GET)
+    public List<Pothole> getDeletedPotholes () {
+        List<Pothole> allPotholes ;
+        try {
+            allPotholes = potholeService.getListOfDeletedPotholes();
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (allPotholes.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No Users Found");
+        }
+        return allPotholes;
+    }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/reportPothole", method = RequestMethod.POST)
     public Pothole createPothole (@Valid @RequestBody Pothole pothole) {

@@ -22,6 +22,12 @@ public class PotholeService {
         return potholeDao.getListOfPotholes();
     }
 
+    public List<Pothole> getListOfDeletedPotholes(){
+        return potholeDao.getListOfDeletedPotholes();
+    }
+
+
+
     // ADDING NEW REFERENCE FOR UPDATING POTHOLE, FOLLOWING PATTERN FROM ABOVE
 
     public Pothole updatePothole(Pothole updatedPothole) {
