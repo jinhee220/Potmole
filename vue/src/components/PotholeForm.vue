@@ -149,7 +149,7 @@ button[type="submit"]:hover {
 	align-items: center;
 	background-color: #bbbab9;
 	padding-top: 10px;
-	padding-bottom: 50px;
+	padding-bottom: 25px;
 	width: 100%;
 }
 
@@ -171,7 +171,7 @@ button[type="submit"]:hover {
 
 }
 
-.button-container{
+.button-container {
 
 	margin-bottom: 20px;
 

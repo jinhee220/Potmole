@@ -76,13 +76,13 @@ export default {
 
 <style scoped>
 .spacer {
-	height: 66px;
-	background-color: #bbbab9;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: -1;
+  height: 66px;
+  background-color: #bbbab9;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
 }
 
 .form-input-group {
@@ -100,7 +100,7 @@ label {
   border: 2px solid #BBBAB9;
   border-radius: 10px;
   width: 45%;
-  box-shadow: gray 5px 5px 5px ;
+  box-shadow: gray 5px 5px 5px;
   margin-top: 50px;
 }
 
@@ -110,34 +110,36 @@ input[type="password"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-} 
+}
 
 #confirmPassword {
-  width: 57%;
+  width: 50%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
 button[type="submit"] {
-  background-color: #ffbd8b; 
+  background-color: #ffbd8b;
   color: black;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  box-shadow: gray 5px 5px 5px ;
+  box-shadow: gray 5px 5px 5px;
 }
 
 button[type="submit"]:hover {
-  background-color: #d68548; 
+  background-color: #d68548;
 }
 
-.form > h1 {
+.form>h1 {
   font-size: 1.5rem;
 }
 
-.form > h1, label,.link {
+.form>h1,
+label,
+.link {
   color: black;
 }
 
@@ -152,13 +154,57 @@ button[type="submit"]:hover {
   padding-top: 20px;
 }
 
-#last-input {
+/* #last-input {
   text-align: left;
   margin-left: 12.5%;
-}
+} */
+
 * {
   color: black;
 }
 
+.form-input-group {
+  display: grid;
+}
 
+.form-input-group>* {
+  margin: auto;
+}
+
+@media screen and (max-width: 400px) {
+  #register {
+    width: 80%;
+
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  #confirmPassword {
+    width: 50%;
+  }
+
+  .form-input-group {
+    display: grid;
+  }
+
+  .form-input-group>* {
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .form-input-group {
+    display: grid;
+  }
+
+  .form-input-group>* {
+    margin: auto;
+  }
+
+  label {
+    font-size: 1.2rem;
+  }
+}
 </style>

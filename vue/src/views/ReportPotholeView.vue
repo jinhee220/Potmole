@@ -1,25 +1,25 @@
 <!-- this is where site visitors can report a pothole AND a pothole object is sent to server -->
 <template>
 	<div class="entire-page">
-			<div class="spacer"></div>
-			
-			<div class="header">
-				<h1>Click a Pothole Location</h1>
-				<img src="../assets/potholeMarker.png">
-			</div>
-			
-		<div class = "upper-form">
+		<div class="spacer"></div>
+
+		<div class="header">
+			<h1>Click a Pothole Location</h1>
+			<img src="../assets/potholeMarker.png">
+		</div>
+
+		<div class="upper-form">
 
 			<div class="map-background">
 				<!-- Call MapBox component and set parentComponent prop. 
 			@coordinates-selected listens for $emit from child component MapBox and runs handleCoordinatesSelected method -->
-					<MapBox class="mapbox" parent-component="ReportPotholeView" />
+				<MapBox class="mapbox" parent-component="ReportPotholeView" />
 			</div>
-			
+
 			<div class="instruction">
 				<p>Report a Pothole</p>
 			</div>
-			
+
 		</div>
 		<PotholeForm v-bind:pothole="pothole" />
 	</div>
@@ -53,13 +53,13 @@ export default {
 .spacer {
 	height: 50px;
 	background-color: #bbbab9;
-	
+
 }
 
 h1 {
 	text-align: center;
 	color: black;
-	font-size: 2rem;
+	font-size: clamp(1rem, 6vw, 2rem);
 	margin-bottom: 1rem;
 }
 
@@ -83,17 +83,18 @@ h2 {
 }
 
 .instruction {
-	font-size: 1.5rem;
+	/* font-size: 1.5rem; */
+	font-size: clamp(1rem, 5vw, 1.5rem);
 	text-align: center;
 	margin-bottom: 1rem;
 	padding-bottom: 0.2rem;
 }
 
 img {
-	width: 35px;
-	height: 50px;
+	width: clamp(25px, 5vw, 40px);
+	height: clamp(30px, 5vw, 50px);
 	padding: 10px;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 .entire-page {
@@ -102,11 +103,10 @@ img {
 
 .map-background {
 	background-color: white;
-	
+
 }
 
 .upper-form {
 	background-color: white;
 }
-
 </style>

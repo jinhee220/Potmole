@@ -57,11 +57,11 @@ export default {
         MapBox
     },
     watch: {
-    potholeList() {
-      // Re-add markers whenever potholeList changes
-      this.getFilteredList();
-    }
-  },
+        potholeList() {
+            // Re-add markers whenever potholeList changes
+            this.getFilteredList();
+        }
+    },
     methods: {
 
         getFilteredList() {
@@ -145,4 +145,6 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 400px) {}
 </style>

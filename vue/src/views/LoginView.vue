@@ -1,29 +1,29 @@
 <template>
-    <div class="spacer"></div>
-      <div id="login">
-        <form class="form" v-on:submit.prevent="login">
-          <h1>Please Sign In</h1>
-          <hr class="divide">
-          <div role="alert" v-if="invalidCredentials">
-            Invalid username and password!
-          </div>
-          <div role="alert" v-if="this.$route.query.registration">
-            Thank you for registering, please sign in.
-          </div>
-          <div class="form-input-group" id="first-input">
-            <label for="username">Username</label>
-            <input type="text" id="username" v-model="user.username" required autofocus />
-          </div>
-          <div class="form-input-group">
-            <label for="password">Password </label>
-            <input type="password" id="password" v-model="user.password" required />
-          </div>
-          <button type="submit"><strong>Sign in</strong></button>
-          <p>
-            <router-link class="link" v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link>
-          </p>
-        </form>
-    </div>
+  <div class="spacer"></div>
+  <div id="login">
+    <form class="form" v-on:submit.prevent="login">
+      <h1>Please Sign In</h1>
+      <hr class="divide">
+      <div role="alert" v-if="invalidCredentials">
+        Invalid username and password!
+      </div>
+      <div role="alert" v-if="this.$route.query.registration">
+        Thank you for registering, please sign in.
+      </div>
+      <div class="form-input-group" id="first-input">
+        <label for="username">Username</label>
+        <input type="text" id="username" v-model="user.username" required autofocus />
+      </div>
+      <div class="form-input-group">
+        <label for="password">Password </label>
+        <input type="password" id="password" v-model="user.password" required />
+      </div>
+      <button type="submit"><strong>Sign in</strong></button>
+      <p>
+        <router-link class="link" v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link>
+      </p>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -65,13 +65,13 @@ export default {
 
 <style scoped>
 .spacer {
-	height: 66px;
-	background-color: #bbbab9;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: -1;
+  height: 66px;
+  background-color: #bbbab9;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
 }
 
 .form-input-group {
@@ -91,7 +91,7 @@ label {
   width: 33%;
   box-shadow: gray 5px 5px 5px;
   margin-top: 50px;
-  
+
 }
 
 input[type="text"],
@@ -100,27 +100,29 @@ input[type="password"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-} 
+}
 
 button[type="submit"] {
-  background-color: #ffbd8b; 
+  background-color: #ffbd8b;
   color: black;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  box-shadow: gray 5px 5px 5px ;
+  box-shadow: gray 5px 5px 5px;
 }
 
 button[type="submit"]:hover {
-  background-color: #d68548; 
+  background-color: #d68548;
 }
 
-.form > h1 {
+.form>h1 {
   font-size: 1.5rem;
 }
 
-.form > h1, label,.link {
+.form>h1,
+label,
+.link {
   color: black;
 }
 
@@ -139,4 +141,13 @@ button[type="submit"]:hover {
   color: black;
 }
 
+@media screen and (max-width: 400px) {
+  #login {
+    width: 80%;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+}
 </style>

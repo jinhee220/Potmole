@@ -11,7 +11,8 @@
         <router-link class="link" v-bind:to="{ name: 'ReportPothole' }">Report Potholes</router-link>
         <!-- <router-link class="link" v-bind:to="{ name: 'home' }">About</router-link>
         <router-link class="link" v-bind:to="{ name: 'home' }">Contact Us</router-link> -->
-        <router-link class="link" v-bind:to="{ name: 'EmployeeForm' }" v-if="checkCurrentUser()">Employee Hub</router-link>
+        <router-link class="link" v-bind:to="{ name: 'EmployeeForm' }" v-if="checkCurrentUser()">Employee
+          Hub</router-link>
       </div>
 
       <div class="right">
@@ -92,7 +93,7 @@ export default {
 .link {
   color: rgb(0, 0, 0);
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: clamp(.5rem, 2.1vw, 2rem);
   padding-left: 10px;
   padding-right: 10px;
   /* border: 2px rgb(0, 0, 0) solid; */
@@ -114,5 +115,11 @@ export default {
   /* float: right; */
   border-radius: inherit;
   flex-wrap: nowrap;
+}
+
+@media screen and (max-width: 400px) {
+  .nav {
+    height: 30px;
+  }
 }
 </style>

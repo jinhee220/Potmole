@@ -108,7 +108,7 @@ div>h2 {
   color: black;
   background-color: #E8E2DD;
   padding: 10px;
-  font-size: 1.5em;
+  font-size: 2rem;
   font-weight: bolder;
 }
 
@@ -136,5 +136,32 @@ footer {
   margin-top: 5%;
   margin-left: 1%;
   padding-left: 18px;
+}
+
+@media screen and (max-width: 400px) {
+  .btnbox {
+    width: 40%;
+  }
+
+  .btn {
+    font-size: .7rem;
+  }
+
+  .box p {
+    font-size: 15px;
+  }
+
+  .box {
+    width: 70%;
+  }
+
+  .logo {
+    padding-top: 120px;
+  }
+
+  .btnbox {
+    padding: 10px;
+  }
+
 }
 </style>

@@ -53,11 +53,13 @@ export default {
 .spacer {
 	height: 50px;
 }
+
 .upper-form {
 	background-color: white;
 }
+
 .instruction {
-	font-size: 1.5rem;
+	font-size: clamp(1rem, 5vw, 1.5rem);
 	text-align: center;
 	margin-bottom: 1rem;
 }
@@ -71,6 +73,7 @@ export default {
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
+	padding-bottom: 25px;
 }
 
 .mapbox {
@@ -79,14 +82,17 @@ export default {
 }
 
 img {
-	width: 35px;
-	height: 50px;
+	/* width: 35px;
+	height: 50px; */
+	width: clamp(25px, 5vw, 40px);
+	height: clamp(30px, 5vw, 50px);
 	padding: 10px;
 	margin-top: 10px;
 }
 
 h2 {
-	font-size: 2rem;
+	/* font-size: 2rem; */
+	font-size: clamp(1rem, 6vw, 2rem);
 	text-align: center;
 	margin-bottom: 1rem;
 }

@@ -1,65 +1,66 @@
 <template>
     <body class="main">
-    <div class="employee">
-        <form v-on:submit.prevent="submitForm">
-            <div class="immutable_data">
-            <p id="pothole_id"><strong>Pothole ID: </strong>{{ updatedPothole.potHoleId }}</p>
-            <p id="longitude"><strong>Longitude: </strong>{{ updatedPothole.longitude }}</p>
-            <p id="latitude"><strong>Latitude: </strong>{{ updatedPothole.latitude }}</p>
-            <p id="addressStreet"><strong>Street: </strong>{{ deliminatedAddress.street }}</p>
-            <p id="addressCityState"><strong>City, State: </strong>{{ deliminatedAddress.city }} {{ deliminatedAddress.state }}</p>
-            <p id="addressCountry"><strong>Country: </strong>{{ deliminatedAddress.country }}</p>
-            </div>
-            <div class="mutable_data">
-            <div class="statusField">
-                <label for="currentStatus"><strong>Status: </strong></label>
-                <div class="dropdown">
-                    <div class="dropdown-content">
-                        <select id="currentStatus" name="currentStatus" v-model="updatedPothole.currentStatus"
-                            @change="toggleDropdown">
-                            <option value="Reported">Reported</option>
-                            <option value="Inspected">Inspected</option>
-                            <option value="Repaired">Repaired</option>
-                            <option value="Deleted">Deleted</option>
-                        </select>
-                    </div>
+        <div class="employee">
+            <form v-on:submit.prevent="submitForm">
+                <div class="immutable_data">
+                    <p id="pothole_id"><strong>Pothole ID: </strong>{{ updatedPothole.potHoleId }}</p>
+                    <p id="longitude"><strong>Longitude: </strong>{{ updatedPothole.longitude }}</p>
+                    <p id="latitude"><strong>Latitude: </strong>{{ updatedPothole.latitude }}</p>
+                    <p id="addressStreet"><strong>Street: </strong>{{ deliminatedAddress.street }}</p>
+                    <p id="addressCityState"><strong>City, State: </strong>{{ deliminatedAddress.city }} {{
+                        deliminatedAddress.state }}</p>
+                    <p id="addressCountry"><strong>Country: </strong>{{ deliminatedAddress.country }}</p>
                 </div>
-            </div>
-            <p><strong>Reported Date: </strong>{{ updatedPothole.reportedDate }}</p>
+                <div class="mutable_data">
+                    <div class="statusField">
+                        <label for="currentStatus"><strong>Status: </strong></label>
+                        <div class="dropdown">
+                            <div class="dropdown-content">
+                                <select id="currentStatus" name="currentStatus" v-model="updatedPothole.currentStatus"
+                                    @change="toggleDropdown">
+                                    <option value="Reported">Reported</option>
+                                    <option value="Inspected">Inspected</option>
+                                    <option value="Repaired">Repaired</option>
+                                    <option value="Deleted">Deleted</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <p><strong>Reported Date: </strong>{{ updatedPothole.reportedDate }}</p>
 
-            <div class="field">
-                <label for="inspectedDate"><strong>Date Inspected: </strong></label>
-                <input type="text" id="inspectedDate" name="inspectedDate" v-model="updatedPothole.inspectedDate" />
-            </div>
-            <div class="field">
-                <label for="repairedDate"><strong>Date Repaired: </strong></label>
-                <input type="text" id="repairedDate" name="repairedDate" v-model="updatedPothole.repairedDate" />
-            </div>
-            <div class="severityField">
-                <label for="severity"><strong>Severity: </strong></label>
-                <div class="dropdown">
-                    <div class="dropdown-content">
-                        <select id="severity" name="severity" v-model="updatedPothole.severity"
-                            @change="toggleDropdown">
-                            <option value="Uninspected">Uninspected</option>
-                            <option value="Mild">Mild</option>
-                            <option value="Moderate">Moderate</option>
-                            <option value="Severe">Severe</option>
-                        </select>
+                    <div class="field">
+                        <label for="inspectedDate"><strong>Date Inspected: </strong></label>
+                        <input type="text" id="inspectedDate" name="inspectedDate" v-model="updatedPothole.inspectedDate" />
+                    </div>
+                    <div class="field">
+                        <label for="repairedDate"><strong>Date Repaired: </strong></label>
+                        <input type="text" id="repairedDate" name="repairedDate" v-model="updatedPothole.repairedDate" />
+                    </div>
+                    <div class="severityField">
+                        <label for="severity"><strong>Severity: </strong></label>
+                        <div class="dropdown">
+                            <div class="dropdown-content">
+                                <select id="severity" name="severity" v-model="updatedPothole.severity"
+                                    @change="toggleDropdown">
+                                    <option value="Uninspected">Uninspected</option>
+                                    <option value="Mild">Mild</option>
+                                    <option value="Moderate">Moderate</option>
+                                    <option value="Severe">Severe</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit" class="button-form">Submit</button>
+                        <button type="button" class="button-form" v-on:click="hardDeletePothole">Hard Delete</button>
                     </div>
                 </div>
-            </div>
-            <div class="button-container">
-            <button type="submit" class="button-form" >Submit</button>
-            <button type="button" class="button-form" v-on:click="hardDeletePothole">Delete</button>
-            </div>
-        </div>
-        </form>
-        <!-- <div>
+            </form>
+            <!-- <div>
             <button type="button" class="button-form" v-on:click="hardDeletePothole">Delete</button>
         </div> -->
-    </div>
-</body>
+        </div>
+    </body>
 </template>
 
 <script>
@@ -104,17 +105,17 @@ export default {
                 severity: this.pothole.severity
             }
         },
-       
+
 
     },
     methods: {
-        splitAddress(){
+        splitAddress() {
             const addressArray = this.pothole.streetAddress.split(', ')
-            if (addressArray.length>0){
-            this.deliminatedAddress.street = addressArray[0];
-            this.deliminatedAddress.city=addressArray[1];
-            this.deliminatedAddress.state=addressArray[2];
-            this.deliminatedAddress.country=addressArray[3];
+            if (addressArray.length > 0) {
+                this.deliminatedAddress.street = addressArray[0];
+                this.deliminatedAddress.city = addressArray[1];
+                this.deliminatedAddress.state = addressArray[2];
+                this.deliminatedAddress.country = addressArray[3];
             }
         },
         // Toggle's whether the selection menu acts as a dropdown, activated on using the dropdown
@@ -164,7 +165,6 @@ export default {
 </script>
 
 <style scoped>
-
 .button-container {
     display: flex;
     flex-direction: row;
@@ -191,21 +191,22 @@ button:hover {
 #repairedDate {
     margin-left: 7px;
 }
-.severityField{
+
+.severityField {
     display: flex;
     flex-direction: row;
 }
 
-#severity{
+#severity {
     margin-left: 5px;
 }
 
-.statusField{
+.statusField {
     display: flex;
     flex-direction: row;
 }
 
-.btn{
+.btn {
     margin: 10px 0px;
 }
 
@@ -214,7 +215,7 @@ h3 {
     padding: 0px;
 }
 
-#currentStatus{
+#currentStatus {
     margin-left: 5px;
 }
 
@@ -223,36 +224,43 @@ h3 {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
-    "pothole_id addressStreet"
-    "longitude addressCityState"
-    "latitude addressCountry";
+        "pothole_id addressStreet"
+        "longitude addressCityState"
+        "latitude addressCountry";
     text-align: center;
-    }
+}
+
 #pothole_id {
     grid-area: pothole_id;
 }
+
 #longitude {
     grid-area: longitude;
 }
+
 #latitude {
     grid-area: latitude;
 }
+
 #addressStreet {
     grid-area: addressStreet;
 }
+
 #addressCityState {
     grid-area: addressCityState;
 }
+
 #addressCountry {
     grid-area: addressCountry;
 }
+
 .employee {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 80%;
     border-radius: 10px;
-    box-shadow: gray 5px 5px 5px ;
+    box-shadow: gray 5px 5px 5px;
     background-color: white;
 }
 
