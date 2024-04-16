@@ -1,9 +1,23 @@
 <template>
-	<div class="spacer"></div>
-	
-	<div class="container">
-		<MapBox parentComponent="EmployeeFormView" @setPotholeId="setPotholeToUpdate"/>
-		<EmployeeForm v-bind:pothole="pothole"/>
+	<div class="main-view">
+		<div class="spacer"></div>
+		<div class="header">
+			<h2>Employee Hub</h2>
+			<img src="../assets/potholeMarker.png">
+
+		</div>
+
+		<div class="container">
+			<div class="upper-form">
+				<div class="map">
+					<MapBox class="mapbox" parentComponent="EmployeeFormView" @setPotholeId="setPotholeToUpdate" />
+				</div>
+				<div class="instruction">
+					<p>Please Update Selected Pothole Below</p>
+				</div>
+			</div>
+			<EmployeeForm v-bind:pothole="pothole" />
+		</div>
 	</div>
 </template>
 
@@ -20,29 +34,69 @@ export default {
 		}
 	},
 	components: {
-    //EmployeeList,
-    EmployeeForm,
-    MapBox
-},
-methods : {
-	setPotholeToUpdate(id){
-    
-	this.pothole = this.$store.state.potholeList.find(p => p.potHoleId === id);
+		//EmployeeList,
+		EmployeeForm,
+		MapBox
+	},
+	methods: {
+		setPotholeToUpdate(id) {
 
+			this.pothole = this.$store.state.potholeList.find(p => p.potHoleId === id);
+
+		}
 	}
-}
 }
 
 </script>
 
-<style>
+<style scoped>
 .spacer {
-	height: 1rem;
+	height: 50px;
+}
+.upper-form {
+	background-color: white;
+}
+.instruction {
+	font-size: 1.5rem;
+	text-align: center;
+	margin-bottom: 1rem;
 }
 
-.container{
+.main-view {
+	background: #bbbab9;
+	width: 100%;
+}
+
+.container {
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
+}
+
+.mapbox {
+	width: 90%;
+	margin: auto;
+}
+
+img {
+	width: 35px;
+	height: 50px;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+h2 {
+	font-size: 2rem;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+.header {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	background-color: white;
+	margin-top: 1rem;
+	border: none;
 }
 </style>

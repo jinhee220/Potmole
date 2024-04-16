@@ -254,6 +254,7 @@ h3 {
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: gray 5px 5px 5px ;
+    background-color: white;
 }
 
 .mutable_data {
