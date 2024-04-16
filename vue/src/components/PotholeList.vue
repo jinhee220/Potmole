@@ -56,6 +56,12 @@ export default {
         PotholeDetail,
         MapBox
     },
+    watch: {
+    potholeList() {
+      // Re-add markers whenever potholeList changes
+      this.getFilteredList();
+    }
+  },
     methods: {
 
         getFilteredList() {
