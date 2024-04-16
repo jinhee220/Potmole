@@ -65,9 +65,13 @@ export default {
 
 <style scoped>
 .spacer {
-  height: 1rem;
-  background-color: white;
-  padding-bottom: 50px;
+	height: 66px;
+	background-color: #bbbab9;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: -1;
 }
 
 .form-input-group {
@@ -86,6 +90,7 @@ label {
   border-radius: 10px;
   width: 33%;
   box-shadow: gray 5px 5px 5px;
+  margin-top: 50px;
   
 }
 

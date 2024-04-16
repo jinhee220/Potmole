@@ -4,7 +4,7 @@
 		<!-- 5 buttons here for All Reported Inspected, Repaired, Deleted (v-if employee only)-->
 		<div class="list">
 			<div class="header">
-				<h2>Potholes List</h2>
+				<h2>Potholes</h2>
 				<img src="../assets/potholeMarker.png">
 			</div>
 			<PotholeList />

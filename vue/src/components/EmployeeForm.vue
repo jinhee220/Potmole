@@ -251,7 +251,6 @@ h3 {
     flex-direction: column;
     align-items: center;
     width: 80%;
-    border: 1px solid black;
     border-radius: 10px;
     box-shadow: gray 5px 5px 5px ;
     background-color: white;

@@ -147,17 +147,20 @@ button[type="submit"]:hover {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background-color: #bbbab9;
+	padding-top: 10px;
+	padding-bottom: 50px;
+	width: 100%;
 }
 
 .pothole {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 	width: 80%;
-	border: 1px solid black;
 	border-radius: 10px;
 	box-shadow: gray 5px 5px 5px;
+	background-color: white;
 }
 
 .form-group {

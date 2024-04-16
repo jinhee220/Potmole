@@ -7,11 +7,11 @@
     <div class="nav">
       <div class="left">
         <router-link class="link" v-bind:to="{ name: 'home' }">Home</router-link>
-        <router-link class="link" v-bind:to="{ name: 'PotholeList' }">Potholes</router-link>
-        <router-link class="link" v-bind:to="{ name: 'ReportPothole' }">Report a Pothole</router-link>
+        <router-link class="link" v-bind:to="{ name: 'PotholeList' }">View Potholes</router-link>
+        <router-link class="link" v-bind:to="{ name: 'ReportPothole' }">Report Potholes</router-link>
         <!-- <router-link class="link" v-bind:to="{ name: 'home' }">About</router-link>
         <router-link class="link" v-bind:to="{ name: 'home' }">Contact Us</router-link> -->
-        <router-link class="link" v-bind:to="{ name: 'EmployeeForm' }" v-if="checkCurrentUser()">Employee</router-link>
+        <router-link class="link" v-bind:to="{ name: 'EmployeeForm' }" v-if="checkCurrentUser()">Employee Hub</router-link>
       </div>
 
       <div class="right">
