@@ -8,7 +8,7 @@
 		</div>
 		<!-- Call MapBox component and set parentComponent prop. 
 			@coordinates-selected listens for $emit from child component MapBox and runs handleCoordinatesSelected method -->
-		<MapBox class="mapbox" parent-component="ReportPotholeView" @coordinates-selected="handleCoordinatesSelected" />
+		<MapBox class="mapbox" parent-component="ReportPotholeView" />
 	</div>
 	<div>
 		<div class="header">
@@ -39,14 +39,6 @@ export default {
 
 		pothole() { return this.$store.state.pothole; },
 
-	},
-	methods: {
-		handleCoordinatesSelected(coordinates) {
-
-			this.$store.state.pothole.longitude = coordinates.longitude;
-			this.$store.state.pothole.latitude = coordinates.latitude;
-			//this.$store.state.pothole.streetAddress = coordinates.streetAddress;
-		},
 	},
 };
 </script>

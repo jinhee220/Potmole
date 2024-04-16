@@ -25,39 +25,73 @@ import PotholeService from "../services/PotholeService.js"
 export default {
 	data() {
 		return {
-			// change this to be a prop from the form
-			editCoordinates: {
-				longitude: '',
-				latitude: '',
-				streetAddress: '',
-			},
 			// Set null map variable to allow the map to updated
 			map: null,
 			// Set null marker variable to allow a single marker to be reassigned on click
 			marker: null,
-			// Set empty potholeList array
-			potholeList: [],
+			
 		};
 	},
+	computed: {
+        potholeList() {
+            return this.$store.state.potholeList
+        },
+    },
 	props: {
-		coordinates: {
-			type: Object,
-			required: true,
-		},
 		parentComponent: {
 			type: String,
 			required: true,
 		}
 	},
 	mounted() {
-		// Update the potholeList in store
-		this.$store.commit("UPDATE_POTHOLE_LIST");
 
-		// Set your Mapbox access token
+		// Set Mapbox access token
 		mapboxgl.accessToken =
 			"pk.eyJ1IjoidGVzdHltY3Rlc3RmYWNlIiwiYSI6ImNsdW1wcjE5NjB3aGUyaW1scGVtb2R4YjIifQ._vhnmLy-i4syL82KbkdyDA";
+		
+		// Update Store on mount
+		this.$store.commit("UPDATE_POTHOLE_LIST");
 
-		// Create the map instance
+		// Initialize Map
+		this.initializeMap();
+
+		// Only allows the following code to run if component is being imported into PotholeList
+			this.addAllMarkers(this.potholeList);
+		
+		// Only allows the following code to run if component is being imported into ReportPotholeView
+			this.setReportPotholeListener();
+	},
+	// Constantly updates markers every time potholeList is changed
+	watch: {
+    potholeList() {
+      // Re-add markers whenever potholeList changes
+      this.addAllMarkers(this.potholeList);
+    }
+  },
+
+	// Method to create an element for marker, instantiate marker, and add marker to map
+	methods: {
+		setReportPotholeListener(){
+			if (this.parentComponent === 'ReportPotholeView') {
+			
+			// This lets us click on map and get coordinates and call methods
+			this.map.on("click", (event) => {
+				const coords = event.lngLat;
+
+				// Call method that adds marker to the map
+				this.addMarker(coords);
+				
+				// **** RICH DID IT ****
+				//this.reverseGeocode(coords);
+				
+				// Update longitude and latitude properties of reported pothole with clicked coordinates
+				this.$store.state.pothole.longitude = coords.lng.toFixed(5);
+				this.$store.state.pothole.latitude = coords.lat.toFixed(5);
+			});
+		}
+	},
+		initializeMap() {
+			// Create the map instance
 		this.map = new mapboxgl.Map({
 			container: this.$refs.map,
 			style: "mapbox://styles/mapbox/streets-v12",
@@ -99,48 +133,9 @@ export default {
 				showUserHeading: true
 			}));
 
-
 		// This adds Geocoder plugin to map
 		this.map.addControl(geocoder, 'top-left');
-
-		// Only allows the following code to run if component is being imported into PotholeList
-		if (this.parentComponent === 'PotholeList' || this.parentComponent === 'EmployeeFormView') {
-			this.getPotholeList();
-		}
-		// Only allows the following code to run if component is being imported into ReportPotholeView
-		if (this.parentComponent === 'ReportPotholeView') {
-
-			// This lets us click on map and get coordinates and call methods
-			this.map.on("click", (event) => {
-				const coords = event.lngLat;
-
-
-				// Call method that adds marker to the map
-				this.addMarker(coords);
-
-				// Update street address property of editCoordinates by feeding clicked coordinates
-				// Currently is one click behind; NEEDS FIXING 
-				
-				// **** RICH DID IT ****
-				//this.reverseGeocode(coords);
-
-				// Update longitude and latitude properties of editCoordinates with clicked coordinates
-				
-				this.editCoordinates.longitude = coords.lng.toFixed(5);
-				this.editCoordinates.latitude = coords.lat.toFixed(5);
-
-
-				// Send coordinates-selected event with updated coordinates for parent class to listen for
-				this.$emit("coordinates-selected", this.editCoordinates);
-
-			});
-		}
-
-		
-	},
-
-	// Method to create an element for marker, instantiate marker, and add marker to map
-	methods: {
+		},
 		addMarker(coords) {
 			// Check if marker is null. If it is, create element in map document and initialize marker with map.Marker
 			// If marker is not null, skip if statement and only set marker coordinates and add to map
@@ -161,6 +156,7 @@ export default {
 			this.reverseGeocode(coords);
 		},
 		addAllMarkers(potholeList) {
+			if (this.parentComponent === 'PotholeList' || this.parentComponent === 'EmployeeFormView') {
 			// Loop through potholeList and add a marker to the map for each pothole
 			for (const pothole of potholeList) {
 				// Create a new element in instance of map
@@ -190,7 +186,8 @@ export default {
 				marker.setPopup(detailPopup)
 				}
 			}
-		},
+		}
+	},
 		createUserPopup(pothole) {
 			return new mapboxgl.Popup({ offset: [-150, 100] }) // add popups
 				.setHTML(
@@ -198,7 +195,7 @@ export default {
 						<h3 class='popup_id'>Pothole ID: ${pothole.potHoleId}</h3>
 						<img src="src/assets/pothole.jpg" class="popup_img">
 						<p class='popup_status'>Status: ${pothole.currentStatus}</p>
-						<p class='popup_street_address'>${this.editCoordinates.streetAddress}</p>
+						<p class='popup_street_address'>${pothole.streetAddress}</p>
 						<p class='popup_reported_date'>Reported Date:<br>${pothole.reportedDate}</p>
 						<p class='popup_inspected_date'>Inspected Date:<br>${pothole.inspectedDate}</p>
 						<p class='popup_repaired_date'>Repaired Date:<br>${pothole.repairedDate}</p>
@@ -208,15 +205,7 @@ export default {
 		},
 
 		getPotholeList() {
-			PotholeService.getPotholeList()
-				.then((response) => {
-					this.potholeList = response.data;
-
-					this.addAllMarkers(this.potholeList);
-				})
-			// this.$store.commit('UPDATE_POTHOLE_LIST');
-			// this.potholeList = this.$store.state.potholeList;
-			// this.addAllMarkers(this.potholeList);
+			this.$store.commit('UPDATE_POTHOLE_LIST');
 		},
 		getFilteredList(filterTerm){
 			this.potholeList = this.potholeList.filter((pothole) => pothole.currentStatus === filterTerm);
@@ -237,13 +226,7 @@ export default {
 					// The returned data is an object containing nested objects that we branch through to reach our 'place_name', a property that contains a full street address
 					const address = data.features[0].place_name;
 
-					//alert(address);
-
-					//this.$store.commit("UPDATE_STREET_ADDRESS", address);
-
 					this.$store.state.pothole.streetAddress = address;
-
-					this.editCoordinates.streetAddress = address;
 				})
 				.catch((error) => {
 					console.error("Error fetching address:", error);
