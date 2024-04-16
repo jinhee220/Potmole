@@ -18,7 +18,7 @@
                             <option value="Deleted">Deleted</option>
                         </select>
 
-                        <button v-on:click="getFilteredList()">Apply Filter</button>
+                        <button v-on:click="getFilteredList()"><strong>Apply Filter</strong></button>
 
                     </div>
                 </div>

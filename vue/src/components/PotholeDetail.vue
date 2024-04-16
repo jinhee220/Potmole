@@ -33,12 +33,13 @@ export default {
 <style scoped>
 .pothole-card {
 	display: block;
-	box-shadow: gray 2px 2px 2px;
+	box-shadow: gray 3px 3px 3px;
 	border-radius: 10px;
 	max-width: 250px;
 	max-height: 450px;
 	margin: 20px;
 	padding: 10px;
+	padding-left: 12px;
 	background-color: white;
 }
 

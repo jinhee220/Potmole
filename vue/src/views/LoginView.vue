@@ -84,7 +84,7 @@ label {
   background-color: #BBBAB9;
   border: 2px solid #BBBAB9;
   border-radius: 10px;
-  width: 55%;
+  width: 33%;
   box-shadow: gray 5px 5px 5px;
   
 }

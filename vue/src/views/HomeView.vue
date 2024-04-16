@@ -21,6 +21,9 @@
         Say goodbye to bumpy roads and hello to smoother travels with PotMole!</p>
     </div>
     <div class="spacer-bot"></div>
+    <footer>
+      Copyright © PotMole Enterprises
+    </footer>
   </div>
 </template>
 
@@ -63,41 +66,33 @@ export default {
 }
 
 div>img {
-
   width: 60%;
   height: auto;
 }
 
 div>h2 {
-
   color: rgb(0, 0, 0);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
   font-size: 22.3px;
   padding-bottom: 120px;
   font-weight: bolder;
-
 }
 
 .box p {
-
   color: rgb(0, 0, 0);
   font-weight: bolder;
   text-align: left;
-
 }
 
 .box h3 {
-
   color: rgb(0, 0, 0);
   font-size: 35px;
   text-align: left;
   padding-top: 10px;
-
 }
 
 .box {
-
   background-color: #E8E2DD;
   opacity: .8;
   width: 50%;
@@ -108,7 +103,6 @@ div>h2 {
 }
 
 .btn {
-
   border-radius: 10px;
   border: 2px solid black;
   color: black;
@@ -116,8 +110,6 @@ div>h2 {
   padding: 10px;
   font-size: 1.5em;
   font-weight: bolder;
-
-
 }
 
 .btnbox {
@@ -131,5 +123,18 @@ div>h2 {
 .btn-center {
   display: flex;
   justify-content: center;
+}
+
+footer {
+  display: flex;
+  background-color: #E8E2DD;
+  opacity: .7;
+  border-radius: 10px;
+  height: 20px;
+  width: 250px;
+  align-content: left;
+  margin-top: 5%;
+  margin-left: 1%;
+  padding-left: 18px;
 }
 </style>
