@@ -55,7 +55,7 @@ export default {
 }
 
 .upper-form {
-	background-color: white;
+	/* background-color: white; */
 }
 
 .instruction {
@@ -65,7 +65,8 @@ export default {
 }
 
 .main-view {
-	background: #bbbab9;
+	/* background: #bbbab9; */
+	background: linear-gradient(to top, #959595, white);
 	width: 100%;
 }
 
@@ -101,9 +102,14 @@ h2 {
 	display: flex;
 	justify-content: center;
 	align-content: center;
-	background-color: white;
+	/* background-color: white; */
 	margin-top: 1rem;
 	border: none;
 }
 
+@media screen and (max-width: 400px) {
+	.spacer {
+		height: 40px;
+	}
+}
 </style>

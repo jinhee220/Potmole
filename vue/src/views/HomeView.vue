@@ -42,7 +42,9 @@ export default {
 }
 
 .spacer {
-  height: 1.5rem;
+  background-color: rgb(255, 255, 255);
+  opacity: .25;
+  height: 4rem;
 }
 
 .spacer-bot {
@@ -59,7 +61,7 @@ export default {
 
   display: flex;
   justify-content: center;
-  padding-top: 215px;
+  padding-top: 180px;
   z-index: 2;
   background-color: none;
 
@@ -72,7 +74,6 @@ div>img {
 
 div>h2 {
   color: rgb(0, 0, 0);
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
   font-size: 22.3px;
   padding-bottom: 120px;
@@ -156,11 +157,19 @@ footer {
   }
 
   .logo {
-    padding-top: 120px;
+    padding-top: 50px;
   }
 
   .btnbox {
     padding: 10px;
+  }
+
+  .spacer {
+    height: 50px;
+  }
+
+  div>h2 {
+    padding-bottom: 50px;
   }
 
 }

@@ -1,27 +1,29 @@
 <template>
-  <div class="spacer"></div>
-  <div id="register" class="text-center">
-    <form class="form" v-on:submit.prevent="register">
-      <h1>Create Account</h1>
-      <hr class="divide">
-      <div role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
-      </div>
-      <div class="form-input-group" id="first-input">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
-      <div class="form-input-group">
-        <label for="password">Password </label>
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
-      <div class="form-input-group" id="last-input">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
-      </div>
-      <button type="submit"><strong>Create Account</strong></button>
-      <p><router-link class="link" v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
-    </form>
+  <div class="page">
+    <div class="spacer"></div>
+    <div id="register" class="text-center">
+      <form class="form" v-on:submit.prevent="register">
+        <h1>Create Account</h1>
+        <hr class="divide">
+        <div role="alert" v-if="registrationErrors">
+          {{ registrationErrorMsg }}
+        </div>
+        <div class="form-input-group" id="first-input">
+          <label for="username">Username</label>
+          <input type="text" id="username" v-model="user.username" required autofocus />
+        </div>
+        <div class="form-input-group">
+          <label for="password">Password </label>
+          <input type="password" id="password" v-model="user.password" required />
+        </div>
+        <div class="form-input-group" id="last-input">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+        </div>
+        <button type="submit"><strong>Create Account</strong></button>
+        <p><router-link class="link" v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -75,7 +77,17 @@ export default {
 </script>
 
 <style scoped>
+.page {
+  background: linear-gradient(to top, #959595, white);
+  height: 100%;
+}
+
 .spacer {
+  height: 4rem;
+  /* background-color: #bbbab9; */
+}
+
+/* .spacer {
   height: 66px;
   background-color: #bbbab9;
   position: absolute;
@@ -83,7 +95,7 @@ export default {
   left: 0;
   right: 0;
   z-index: -1;
-}
+} */
 
 .form-input-group {
   margin-bottom: 1rem;

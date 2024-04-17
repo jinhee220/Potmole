@@ -15,6 +15,8 @@
           Hub</router-link>
       </div>
 
+      <div class="spacer"></div>
+
       <div class="right">
         <router-link class="link" v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''">Login</router-link>
         <router-link class="link" v-bind:to="{ name: 'register' }">Register</router-link>
@@ -72,8 +74,7 @@ export default {
 
 .nav {
   display: flex;
-  background-color: #E8E2DD;
-  opacity: .7;
+  background-color: transparent;
   border-radius: 10px;
   height: 40px;
   width: 98%;
@@ -94,9 +95,10 @@ export default {
   color: rgb(0, 0, 0);
   text-decoration: none;
   /* font-size: clamp(.5rem, 1.5vw, 2rem); */
-  font-size: 1rem;
+  font-size: 1.7rem;
   padding-left: 10px;
   padding-right: 10px;
+  font-weight: 450;
   /* border: 2px rgb(0, 0, 0) solid; */
 
 }
@@ -121,10 +123,18 @@ export default {
 @media screen and (max-width: 400px) {
   .nav {
     height: 30px;
+    margin-top: -5px;
   }
+
   .link {
-    font-size: .4rem;
+    font-size: .5rem;
+    padding: 5px;
   }
 }
 
+/* @media screen and (max-width: 1370px) {
+  .link {
+    font-size: 1.3rem;
+  }
+} */
 </style>

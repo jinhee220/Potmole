@@ -52,7 +52,7 @@ export default {
 <style scoped>
 .spacer {
 	height: 50px;
-	background-color: #bbbab9;
+	/* background-color: #bbbab9; */
 
 }
 
@@ -79,7 +79,7 @@ h2 {
 	align-content: center;
 	border: none;
 	margin-top: 1rem;
-	background-color: white;
+	/* background-color: white; */
 }
 
 .instruction {
@@ -98,15 +98,22 @@ img {
 }
 
 .entire-page {
-	background-color: #bbbab9;
+	/* background-color: #bbbab9; */
+	background: linear-gradient(to top, #959595, white);
 }
 
 .map-background {
-	background-color: white;
+	/* background-color: white; */
 
 }
 
 .upper-form {
-	background-color: white;
+	/* background-color: white; */
+}
+
+@media screen and (max-width: 400px) {
+	.spacer {
+		height: 40px;
+	}
 }
 </style>

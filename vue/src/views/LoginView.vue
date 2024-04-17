@@ -1,28 +1,30 @@
 <template>
-  <div class="spacer"></div>
-  <div id="login">
-    <form class="form" v-on:submit.prevent="login">
-      <h1>Please Sign In</h1>
-      <hr class="divide">
-      <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
-      </div>
-      <div role="alert" v-if="this.$route.query.registration">
-        Thank you for registering, please sign in.
-      </div>
-      <div class="form-input-group" id="first-input">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
-      <div class="form-input-group">
-        <label for="password">Password </label>
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
-      <button type="submit"><strong>Sign in</strong></button>
-      <p>
-        <router-link class="link" v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link>
-      </p>
-    </form>
+  <div class="page">
+    <div class="spacer"></div>
+    <div id="login">
+      <form class="form" v-on:submit.prevent="login">
+        <h1>Please Sign In</h1>
+        <hr class="divide">
+        <div role="alert" v-if="invalidCredentials">
+          Invalid username and password!
+        </div>
+        <div role="alert" v-if="this.$route.query.registration">
+          Thank you for registering, please sign in.
+        </div>
+        <div class="form-input-group" id="first-input">
+          <label for="username">Username</label>
+          <input type="text" id="username" v-model="user.username" required autofocus />
+        </div>
+        <div class="form-input-group">
+          <label for="password">Password </label>
+          <input type="password" id="password" v-model="user.password" required />
+        </div>
+        <button type="submit"><strong>Sign in</strong></button>
+        <p>
+          <router-link class="link" v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link>
+        </p>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -64,14 +66,14 @@ export default {
 </script>
 
 <style scoped>
+.page {
+  background: linear-gradient(to top, #959595, white);
+  height: 100%;
+}
+
 .spacer {
-  height: 66px;
-  background-color: #bbbab9;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
+  height: 4rem;
+  /* background-color: #bbbab9; */
 }
 
 .form-input-group {
@@ -86,11 +88,12 @@ label {
   margin: auto;
   text-align: center;
   background-color: #BBBAB9;
-  border: 2px solid #BBBAB9;
+  /* border: 2px solid #BBBAB9; */
   border-radius: 10px;
   width: 33%;
   box-shadow: gray 5px 5px 5px;
   margin-top: 50px;
+  padding: 2px;
 
 }
 

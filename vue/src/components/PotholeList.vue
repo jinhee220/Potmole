@@ -3,7 +3,7 @@
         <div class="title-map-filter">
             <div class="map">
                 <!-- Call MapBox component and set parentComponent prop -->
-                <MapBox class="mapbox" parent-component="PotholeList" v-bind:filteredList="filteredList"/>
+                <MapBox class="mapbox" parent-component="PotholeList" />
             </div>
 
             <div class="filter">
@@ -30,7 +30,7 @@
         </div>
     </div>
 </template>
-
+  
 <script>
 import PotholeDetail from "../components/PotholeDetail.vue";
 import PotholeService from "../services/PotholeService.js";
@@ -77,16 +77,16 @@ export default {
     },
 }
 </script>
-
+  
 <style scoped>
 .container {
     display: block;
-    background: #bbbab9;
+    /* background: #bbbab9; */
+    background: linear-gradient(to top, #959595, white);
 
 }
 
 .title-map-filter {
-    background-color: white;
     padding-bottom: 20px;
     display: grid;
 }
@@ -104,8 +104,8 @@ export default {
     width: 95%;
     margin: auto;
     /* border: black 3px solid; 
-}
-*/
+  }
+  */
 
 .mapbox {
     width: 90%;
@@ -146,5 +146,10 @@ button {
     cursor: pointer;
 }
 
-@media screen and (max-width: 400px) {}
+@media screen and (max-width: 400px) {
+    .filter {
+        display: inline-block;
+    }
+
+}
 </style>

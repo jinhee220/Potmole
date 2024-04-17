@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
 .main-view {
-	background: #bbbab9;
+	background: transparent;
 	width: 100%;
 }
 
@@ -33,7 +33,7 @@ export default {
 	display: flex;
 	justify-content: center;
 	align-content: center;
-	background-color: white;
+	/* background-color: white; */
 	margin-top: 1rem;
 	border: none;
 }
@@ -57,5 +57,11 @@ img {
 
 .list {
 	height: 40rem;
+}
+
+@media screen and (max-width: 400px) {
+	.spacer {
+		height: 20px;
+	}
 }
 </style>

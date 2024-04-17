@@ -281,7 +281,5 @@ h3 {
     .field {
         text-align: center;
     }
-
-	
 }
 </style>
