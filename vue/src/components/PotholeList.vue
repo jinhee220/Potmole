@@ -3,7 +3,7 @@
         <div class="title-map-filter">
             <div class="map">
                 <!-- Call MapBox component and set parentComponent prop -->
-                <MapBox class="mapbox" parent-component="PotholeList" />
+                <MapBox class="mapbox" parent-component="PotholeList" v-bind:filteredList="filteredList"/>
             </div>
 
             <div class="filter">

@@ -41,6 +41,10 @@ export default {
 		parentComponent: {
 			type: String,
 			required: true,
+		},
+		filteredList: {
+			type: Array,
+			default: () => [],
 		}
 	},
 	mounted() {
@@ -64,9 +68,13 @@ export default {
 	// Constantly updates markers every time potholeList is changed
 	watch: {
     potholeList() {
-      // Re-add markers whenever potholeList changes
+      // Re-add markers using potholeList whenever potholeList changes
       this.addAllMarkers(this.potholeList);
-    }
+    },
+	// Remove and re-add markers using filteredList whenever filteredList changes
+	filteredList(){
+		this.addAllMarkers(this.filteredList)
+	}
   },
 
 	// Method to create an element for marker, instantiate marker, and add marker to map
@@ -80,9 +88,6 @@ export default {
 
 				// Call method that adds marker to the map
 				this.addMarker(coords);
-				
-				// **** RICH DID IT ****
-				//this.reverseGeocode(coords);
 				
 				// Update longitude and latitude properties of reported pothole with clicked coordinates
 				this.$store.state.pothole.longitude = coords.lng.toFixed(5);
@@ -155,10 +160,12 @@ export default {
 
 			this.reverseGeocode(coords);
 		},
-		addAllMarkers(potholeList) {
+		addAllMarkers(listOfPotholes) {
 			if (this.parentComponent === 'PotholeList' || this.parentComponent === 'EmployeeFormView') {
+			// Delete any current markers to make way for the new markers
+			document.querySelectorAll(".marker").forEach((marker) => marker.remove());
 			// Loop through potholeList and add a marker to the map for each pothole
-			for (const pothole of potholeList) {
+			for (const pothole of listOfPotholes) {
 				// Create a new element in instance of map
 				const markerElement = document.createElement("div");
 				// Assign class to element to be affected by style sheet
