@@ -15,7 +15,7 @@
                             <option value="Reported">Reported</option>
                             <option value="Inspected">Inspected</option>
                             <option value="Repaired">Repaired</option>
-                            <option value="Deleted">Deleted</option>
+                            <!-- <option value="Deleted">Deleted</option> -->
                         </select>
 
                         <button v-on:click="getFilteredList()"><strong>Apply Filter</strong></button>

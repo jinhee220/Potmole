@@ -276,4 +276,12 @@ h3 {
     flex-direction: column;
     align-items: center;
 }
+
+@media screen and (max-width: 400px) {
+    .field {
+        text-align: center;
+    }
+
+	
+}
 </style>

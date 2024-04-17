@@ -93,7 +93,8 @@ export default {
 .link {
   color: rgb(0, 0, 0);
   text-decoration: none;
-  font-size: clamp(.5rem, 2.1vw, 2rem);
+  /* font-size: clamp(.5rem, 1.5vw, 2rem); */
+  font-size: 1rem;
   padding-left: 10px;
   padding-right: 10px;
   /* border: 2px rgb(0, 0, 0) solid; */
@@ -121,5 +122,9 @@ export default {
   .nav {
     height: 30px;
   }
+  .link {
+    font-size: .4rem;
+  }
 }
+
 </style>
